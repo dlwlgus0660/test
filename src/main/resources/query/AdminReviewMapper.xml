@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jeju.admin.review.dao.AdminReviewDao">
+
+	<!-- 게시물 전체 목록 조회 -->
+	<select id="list" resultType="adminReview">
+		select re_number, mem_id, re_title, re_regdate
+		from review_board
+		order by re_number
+	</select>
+
+	<!-- 상세 페이지 조회 -->
+	<select id="detail" resultType="adminReview">
+		select re_number, mem_id, re_title, re_reply, re_content, re_image1, re_image2, re_image3, re_regdate
+		from review_board
+		where re_number = #{re_number}
+	</select>
+
+	<!-- 댓글 답변 등록, 수정 -->
+	<update id="reUpdate" parameterType="adminReview">
+		update REVIEW_BOARD
+		set
+		re_reply = #{re_reply}
+		where
+		re_number = #{re_number}
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<update id="reDelete" parameterType="adminReview">
+		update REVIEW_BOARD
+		set
+		re_reply = null
+		where re_number = #{re_number}
+	</update>
+
+	<!-- 게시물 삭제 -->
+	<delete id="delete" parameterType="adminReview">
+		delete from REVIEW_BOARD
+		where re_number = #{re_number}
+	</delete>
+</mapper>

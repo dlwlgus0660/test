@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jeju.admin.qna.dao.AdminQnaDao">
+
+	<!-- 게시물 전체 목록 조회 -->
+	<select id="list" resultType="adminQnaList">
+		select inq_number, mem_id,
+		inq_title, inq_regdate, inq_state
+		from INQUIRY_BOARD
+		order by inq_number
+	</select>
+
+	<!-- 상세 페이지 조회 -->
+	<select id="detail" resultType="adminQnaList">
+		select inq_number, mem_id,
+		inq_title, inq_regdate, inq_state, inq_content,
+		inq_reply
+		from
+		INQUIRY_BOARD
+		where inq_number=#{inq_number}
+	</select>
+
+	<!-- 댓글 답변 등록,수정 -->
+	<update id="reUpdate" parameterType="adminQnaList">
+		update inquiry_board
+		set
+		inq_reply = #{inq_reply},
+		inq_state = '답변완료'
+		where inq_number =
+		#{inq_number}
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<update id="reDelete" parameterType="adminQnaList">
+		update inquiry_board
+		set
+		inq_reply = null,
+		inq_state = '미완료'
+		where inq_number = #{inq_number}
+	</update>
+
+	<!-- 게시물 삭제 -->
+	<delete id="delete" parameterType="adminQnaList">
+		delete from INQUIRY_BOARD
+		where inq_number=#{inq_number}
+	</delete>
+</mapper>

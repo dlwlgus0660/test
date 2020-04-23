@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jeju.admin.refund.dao.AdminNoticeDao">
+
+	<!-- 공지사항 관리 -->
+	<select id="NoticeList" resultType="AdminNotice">
+		SELECT nt_heading, nt_title, nt_content, nt_image, nt_regdate
+		FROM notice_board;
+	</select>
+		
+	
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.jeju.admin.car.reservation.dao.AdminCarReservationDao">
+
+	<!-- 회원 예약 내역 -->
+	<select id="carResList" resultType="AdminCarReservation">
+		SELECT ren_number,
+		ren_car_number, car_name, rsv_number, rsv_name, ren_license_number,
+		ren_take_date, ren_state, ren_return_date, ren_overtime, ren_add_price
+		FROM RENTAL
+		where ren_state = '입금완료(인수대기)' or ren_state = '렌트중' or
+		ren_state = '반납완료'
+		order by ren_car_number desc
+	</select>
+
+
+</mapper>

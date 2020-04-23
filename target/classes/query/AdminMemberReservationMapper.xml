@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper
+	namespace="com.jeju.admin.member.reservation.dao.AdminMemberReservationDao">
+
+	<!-- 회원 예약 내역 -->
+	<select id="memResList" resultType="AdminMemberReservation">
+		SELECT rsv_number, mem_id,
+		ren_car_number, car_name ,rsv_name, rsv_apply_date, rsv_state,
+		rsv_price, rsv_expected_date
+		FROM RESERVATION
+		where rsv_state = '입금대기'
+		or rsv_state='입금완료(인수대기)' or rsv_state='' or rsv_state='반납완료'
+		order by
+		rsv_number desc
+	</select>
+
+
+</mapper>
