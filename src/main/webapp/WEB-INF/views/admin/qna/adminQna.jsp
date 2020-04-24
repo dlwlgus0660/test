@@ -11,6 +11,7 @@
 			<tr>
 				<th id="inq_number">글 번호</th>
 				<th id="mem_id">ID</th>
+				<th id="mem_name">작성자명</th>
 				<th id="inq_title">제목</th>
 				<th id="inq_regdate">작성일</th>
 				<th id="inq_state">답변 여부</th>
@@ -22,6 +23,7 @@
 							<td><a
 								href="${path}/admin/qnaboard/qnaDetail?inq_number=${row.inq_number}">${row.inq_number}</a></td>
 							<td>${row.mem_id}</td>
+							<td>${row.mem_name}</td>
 							<td>${row.inq_title}</td>
 							<td>${row.inq_regdate}</td>
 							<td>${row.inq_state}</td>
@@ -42,9 +44,9 @@
 
 
 			<div class="form-group">
-				<input type="text" name="keyword" id="keyword" placeholder="제목/내용/ID" />
-				<input type="button" class="btn btn-primary" id="searchBtn"
-					value="검색">
+				<input type="text" name="keyword" id="keyword"
+					placeholder="제목/내용/ID" /> <input type="button"
+					class="btn btn-primary" id="searchBtn" value="검색">
 			</div>
 		</div>
 	</div>

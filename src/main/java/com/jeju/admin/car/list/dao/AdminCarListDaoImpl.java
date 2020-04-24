@@ -37,7 +37,6 @@ public class AdminCarListDaoImpl implements AdminCarListDao {
 	@Override
 	public int delete(int car_model_number) {
 		return sqlSession.delete("delete", car_model_number);
-		/* sqlSession.delete("delete", car_model_number); */
 	}
 
 	// 차량 전체 리스트

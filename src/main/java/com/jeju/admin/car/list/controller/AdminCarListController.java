@@ -40,9 +40,9 @@ public class AdminCarListController {
 		// 전체 레코드수 구현
 		int total = adminCarListService.carListCnt(vo);
 		log.info("total = " + total);
-		
+
 		// 글번호 재설정
-		int count = total - (Util.nvl(vo.getPage())-1) * Util.nvl(vo.getPageSize());
+		int count = total - (Util.nvl(vo.getPage()) - 1) * Util.nvl(vo.getPageSize());
 		log.info("count = " + count);
 
 		List<AdminCarListVO> list = adminCarListService.list(vo);
@@ -55,9 +55,9 @@ public class AdminCarListController {
 		} else {
 			mav.setViewName("admin/carlist/adminCarList"); // 뷰 설정
 			mav.addObject("list", list);
-			mav.addObject("count",count);
-			mav.addObject("total",total);
-			mav.addObject("data",vo);
+			mav.addObject("count", count);
+			mav.addObject("total", total);
+			mav.addObject("data", vo);
 			return mav;
 		}
 	}
@@ -167,10 +167,24 @@ public class AdminCarListController {
 	// 5. 차량 삭제
 
 	@RequestMapping("/admin/carlist/carLsitDelete")
-	public String delete(@RequestParam int car_model_number, HttpServletRequest request) throws IOException {
+	public String delete(@ModelAttribute AdminCarListVO vo, HttpServletRequest request) throws IOException {
 		log.info("delete 호출 성공");
 
-		adminCarListService.delete(car_model_number);
-		return "redirect:/admin/carlist/carList";
+		// 아래 변수에는 입력 성공에 대한 상태값 담습니다.(1 or 0)
+		int result = 0;
+		String url = "";
+
+		if (!vo.getCar_image().isEmpty()) {
+			FileUploadUtil.fileDelete(vo.getCar_image(), request);
+		}
+
+		result = adminCarListService.delete(vo.getCar_model_number());
+		if (result == 1) {
+			url = "/admin/carlist/carList?page=" + "&pageSize = " + vo.getPageSize();
+		} else {
+			url = "/admin/carlist/carList?car_model_number=" + vo.getCar_model_number() + "&page=" + vo.getPage()
+					+ "&pageSize=" + vo.getPageSize();
+		}
+		return "redirect:" + url;
 	}
 }

@@ -5,6 +5,7 @@ import java.sql.Date;
 public class AdminQnaVO {
 	private int inq_number = 0;
 	private String mem_id = "";
+	private String mem_name = "";
 	private String inq_title = "";
 	private String inq_content = "";
 	private String inq_reply = "";
@@ -25,6 +26,14 @@ public class AdminQnaVO {
 
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
+	}
+
+	public String getMem_name() {
+		return mem_name;
+	}
+
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 
 	public String getInq_title() {

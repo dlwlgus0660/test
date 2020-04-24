@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 
@@ -62,6 +63,8 @@
 					<td>${vo.inq_number}</td>
 					<td>ID</td>
 					<td>${vo.mem_id}</td>
+					<td>작성자명</td>
+					<td>${vo.mem_name}</td>
 					<td>작성일</td>
 					<td>${vo.inq_regdate}</td>
 				</tr>
@@ -85,8 +88,8 @@
 		</form>
 		<div>
 			<input type="button" value="목록으로" id="qnaListBtn"
-				class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="삭제하기"
-				id="deleteBtn" class="btn btn-primary">
+				class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp;<input
+				type="button" value="삭제하기" id="deleteBtn" class="btn btn-primary">
 		</div>
 	</div>
 </div>
