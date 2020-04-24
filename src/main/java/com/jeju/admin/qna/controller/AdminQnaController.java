@@ -23,7 +23,7 @@ public class AdminQnaController {
 	private Logger log = LoggerFactory.getLogger(AdminQnaController.class);
 
 	@Inject
-	AdminQnaService adminQnaService;
+	private AdminQnaService adminQnaService;
 
 	// 1. 문의글 전체 리스트
 	@RequestMapping("/qnaboard")

@@ -39,6 +39,8 @@
 			<input type="hidden" name="page" id="page" /> <input type="hidden"
 				name="pageSize" id="pageSize" />
 
+
+
 			<div class="form-group">
 				<input type="text" name="keyword" id="keyword" placeholder="제목/내용/ID" />
 				<input type="button" class="btn btn-primary" id="searchBtn"

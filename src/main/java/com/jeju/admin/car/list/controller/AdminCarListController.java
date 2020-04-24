@@ -37,6 +37,14 @@ public class AdminCarListController {
 	public ModelAndView list(@ModelAttribute AdminCarListVO vo, HttpSession session) throws Exception {
 		log.info("admin carlist 호출 성공");
 
+		// 전체 레코드수 구현
+		int total = adminCarListService.carListCnt(vo);
+		log.info("total = " + total);
+		
+		// 글번호 재설정
+		int count = total - (Util.nvl(vo.getPage())-1) * Util.nvl(vo.getPageSize());
+		log.info("count = " + count);
+
 		List<AdminCarListVO> list = adminCarListService.list(vo);
 		ModelAndView mav = new ModelAndView();
 		ModelAndView login = new ModelAndView();
@@ -47,6 +55,9 @@ public class AdminCarListController {
 		} else {
 			mav.setViewName("admin/carlist/adminCarList"); // 뷰 설정
 			mav.addObject("list", list);
+			mav.addObject("count",count);
+			mav.addObject("total",total);
+			mav.addObject("data",vo);
 			return mav;
 		}
 	}

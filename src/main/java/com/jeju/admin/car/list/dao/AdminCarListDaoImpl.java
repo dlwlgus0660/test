@@ -46,5 +46,10 @@ public class AdminCarListDaoImpl implements AdminCarListDao {
 		return sqlSession.selectList("list", vo);
 	}
 
+	//전체 레코드 수 구현
+	@Override
+	public int carListCnt(AdminCarListVO vo) {
+		return (Integer)sqlSession.selectOne("carListCnt");
+	}
 
 }

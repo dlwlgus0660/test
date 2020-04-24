@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jeju.admin.car.list.dao.AdminCarListDao;
 import com.jeju.admin.car.list.vo.AdminCarListVO;
+import com.jeju.admin.common.page.Paging;
 
 @Service
 public class AdminCarListServiceImpl implements AdminCarListService {
@@ -65,8 +66,30 @@ public class AdminCarListServiceImpl implements AdminCarListService {
 	// 차량 전체 리스트
 	@Override
 	public List<AdminCarListVO> list(AdminCarListVO vo) throws Exception {
+		List<AdminCarListVO> aList = null;
 
-		return adminCarListDao.list(vo);
+		// 페이지 세팅 
+		Paging.setPage(vo);
+
+		// 정렬에 대한 기본값 설정
+		if (vo.getOrder_by() == null)
+			vo.setOrder_by("car_model_number");
+		if (vo.getOrder_sc() == null)
+			vo.setOrder_sc("DESC");
+
+		if (!vo.getKeyword().equals("")) {
+			vo.setStart_row("");
+			vo.setEnd_row("");
+		}
+		aList = adminCarListDao.list(vo);
+		return aList;
 	}
 
+	//전체 레코드 수 구현
+	@Override
+	public int carListCnt(AdminCarListVO bvo) {
+		int countNum = 0;
+		countNum = adminCarListDao.carListCnt(bvo);
+		return countNum;
+	}
 }

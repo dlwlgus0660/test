@@ -21,4 +21,6 @@ public interface AdminCarListService {
 	// 리스트 전체 목록
 	public List<AdminCarListVO> list(AdminCarListVO vo)throws Exception;
 
+	//전체 레코드 수 구현
+	public int carListCnt(AdminCarListVO vo);
 }
