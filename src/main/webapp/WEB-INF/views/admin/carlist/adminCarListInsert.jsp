@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -24,9 +25,12 @@
 			else if (!chkSubmit($("#car_option"), "차량옵션을"))
 				return;
 			else {
-				if($('#file').val() != "") {
-					if(!chkFile($("#file")))
+				if ($('#file').val() != "") {
+					if (!chkFile($("#file")))
 						return;
+				} else {
+					alert("이미지를 등록해주세요");
+					return false;
 				}
 				$("#listInsert").attr({
 					"method" : "POST",
@@ -57,8 +61,7 @@
 				</tr>
 				<tr>
 					<td>대여가격</td>
-					<td><input type="text" name="car_price" id="car_price"
-						>&nbsp;(원)</td>
+					<td><input type="text" name="car_price" id="car_price">&nbsp;(원)</td>
 				</tr>
 				<tr>
 					<td>스틱옵션</td>
@@ -74,7 +77,7 @@
 				<tr>
 					<td>최대 승차 인원</td>
 					<td><select name="car_number_passengers"
-						id="car_number_passengers" >
+						id="car_number_passengers">
 							<option value="5인">5인</option>
 							<option value="6인">6인</option>
 							<option value="7인">7인</option>
@@ -86,20 +89,19 @@
 					</select></td>
 				<tr>
 					<td>일반 보험</td>
-					<td><input type="text" name="car_insurance" id="car_insurance"
-						>&nbsp;(원)</td>
+					<td><input type="text" name="car_insurance" id="car_insurance">&nbsp;(원)</td>
 				<tr>
 					<td>고급 보험</td>
 					<td><input type="text" name="car_adv_insurance"
-						id="car_adv_insurance" >&nbsp;(원)</td>
+						id="car_adv_insurance">&nbsp;(원)</td>
 				</tr>
 				<tr>
 					<td>차량 옵션</td>
 					<td><input type="checkbox" name="car_option" id="car_option"
 						value="네비게이션">네비게이션&nbsp;&nbsp;&nbsp;&nbsp; <input
 						type="checkbox" name="car_option" id="car_option" value="운전석 에어백">운전석
-						에어백&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" name="car_option"
-						id="car_option" value="블랙박스">블랙박스</td>
+						에어백&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox"
+						name="car_option" id="car_option" value="블랙박스">블랙박스</td>
 				</tr>
 				<tr>
 					<td>이미지 업로드</td>
@@ -110,8 +112,9 @@
 	</div>
 
 	<div>
-		<input type="button" name="insertBtn" id="insertBtn" class="btn btn-primary" value="등록">
-		<input type="button" name="listBtn" id="listBtn" class="btn btn-primary" value="목록으로">
+		<input type="button" name="insertBtn" id="insertBtn"
+			class="btn btn-primary" value="등록"> <input type="button"
+			name="listBtn" id="listBtn" class="btn btn-primary" value="목록으로">
 	</div>
 </div>
 

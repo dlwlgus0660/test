@@ -12,7 +12,7 @@
 	<!-- 게시물 검색 쿼리 분리 -->
 	<sql id="carCommon">
 		SELECT
-		car_model_number, car_name, car_image, car_option,
+		car_model_number, car_name, car_image, car_option, car_fuel,
 		car_price,
 		car_registe_date
 		FROM car
@@ -23,6 +23,9 @@
 			<if test="search=='car_option'">
 					<![CDATA[car_option LIKE '%'|| #{keyword} ||'%']]>
 			</if>
+			<if test="search=='car_fuel'">
+					<![CDATA[car_fuel LIKE '%'|| #{keyword} ||'%']]>
+			</if>
 		</where>
 	</sql>
 
@@ -31,12 +34,29 @@
 		resultType="adminCarList">
 		<!-- Board - boardList -->
 		SELECT
-		car_model_number, car_name, car_image, car_option, car_price,
+		car_model_number, car_name, car_image, car_option, car_fuel,
+		car_price,
 		car_registe_date
 		FROM
 		( SELECT list.*, ROWNUM AS RNUM
 		FROM (
 		<include refid="carCommon"></include>
+		<choose>
+			<when test="order_by=='car_model_number'">
+				ORDER BY car_model_number
+			</when>
+			<when test="order_by=='car_price'">
+				ORDER BY car_price
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
 		) list
 		)
 		<where>

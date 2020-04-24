@@ -22,7 +22,9 @@
 				//:contains()는 특정 텍스트를 포함한 요소반환
 				if ($("#search").val() == 'car_option')
 					value = "#list tr td.goDetail";
-				alert(value);
+				else if ($("#search").val() == 'car_fuel') {
+					value = "#list tr td.name";
+				}
 
 				$(value + ":contains('" + word + "')").each(
 						function() {
@@ -106,11 +108,24 @@
 		<table class="table table-bordered">
 
 			<tr>
-				<th>모델고유번호</th>
+				<th data-value="car_model_number" class="order">모델고유번호<c:choose>
+						<c:when
+							test="${data.order_by=='car_model_number' and data.order_sc=='ASC' }">▲</c:when>
+						<c:when
+							test="${data.order_by=='car_model_number' and data.order_sc=='DESC' }">▼</c:when>
+						<c:otherwise>▲</c:otherwise>
+					</c:choose></th>
 				<th>차량명</th>
 				<th>이미지</th>
 				<th>차량옵션</th>
-				<th>대여가격</th>
+				<th>연료옵션</th>
+				<th data-value="car_price" class="order">대여가격<c:choose>
+						<c:when
+							test="${data.order_by=='car_price' and data.order_sc=='ASC' }">▲</c:when>
+						<c:when
+							test="${data.order_by=='car_price' and data.order_sc=='DESC' }">▼</c:when>
+						<c:otherwise>▲</c:otherwise>
+					</c:choose></th>
 				<th>등록일</th>
 			</tr>
 			<%--====================데이터 출력 =============== --%>
@@ -123,6 +138,7 @@
 							<td>${row.car_name}</td>
 							<td>${row.car_image}</td>
 							<td>${row.car_option}</td>
+							<td>${row.car_fuel}</td>
 							<td>${row.car_price}</td>
 							<td>${row.car_registe_date}</td>
 						</tr>
@@ -149,16 +165,17 @@
 						<table>
 							<tr>
 								<td id="btd1"><label>검색조건</label> <select id="search"
-									name="search">
+									name="search" class="form-control">
 										<option value="all">전체</option>
 										<option value="car_name">차량명</option>
 										<option value="car_option">차량옵션</option>
+										<option value="car_fuel">연료옵션</option>
 								</select></td>
 							</tr>
 						</table>
 						<input type="text" name="keyword" id="keyword"
-							placeholder="차량명/차량옵션" /> <input type="button"
-							class="btn btn-primary" id="searchData" value="검색" />&nbsp;&nbsp;&nbsp;한페이지에&nbsp;&nbsp;&nbsp;
+							placeholder="검색어를 입력하세요." /> <input type="button"
+							class="btn btn-primary" id="searchData" value="검색" />&nbsp;&nbsp;&nbsp;한페이지에&nbsp;&nbsp;
 						<select id="pageSize" name="pageSize">
 							<option value="1">1줄</option>
 							<option value="3">3줄</option>

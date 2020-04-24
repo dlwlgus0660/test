@@ -64,9 +64,18 @@ function chkFile(item) {
 	/*
 	 * 배열내의 값을 찾아서 인덱스를 반환(요소가 없을 경우 -1 반환) jQuery.inArray(찾을 값, 검색 대상의 배열)
 	 */
+
+	if ($(item).val().replace(/\s/g, "") == "") {
+		alert(msg + "등록해 주세요.");
+		$(item).val("");
+		$(item).focus();
+		return false;
+	} else {
+		return true;
+	}
 	var ext = item.val().split('.').pop().toLowerCase();
 	if (jQuery.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
-		alert('gif, png, jpg, jpeg 파일만 업로드 할 수 있습니다.');
+		alert('이미지는 gif, png, jpg, jpeg 파일만 업로드 할 수 있습니다.');
 		return false;
 	} else {
 		return true;
