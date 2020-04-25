@@ -40,6 +40,7 @@
 		( SELECT list.*, ROWNUM AS RNUM
 		FROM (
 		<include refid="qnaCommon"></include>
+		ORDER BY inq_number ASC
 		) list
 		)
 		<where>

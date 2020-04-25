@@ -34,6 +34,7 @@
 		( SELECT list.*, ROWNUM AS RNUM
 		FROM (
 		<include refid="revCommon"></include>
+		ORDER BY re_number ASC
 		) list
 		)
 		<where>

@@ -32,11 +32,18 @@
 					alert("이미지를 등록해주세요");
 					return false;
 				}
-				$("#listInsert").attr({
-					"method" : "POST",
-					"action" : "/admin/carlist/carListInsert"
-				})
-				$("#listInsert").submit();
+				if (confirm("등록하시겠습니까?") == true) {
+					$("#listInsert").attr({
+						"method" : "POST",
+						"action" : "/admin/carlist/carListInsert"
+					})
+					alert("등록되었습니다.")
+					$("#listInsert").submit();
+
+				} else {
+					alert("취소되었습니다.");
+					location.href = "/admin/carlist/carList";
+				}
 			}
 		})
 
@@ -57,7 +64,7 @@
 			<table border="1" class="table table-bordered">
 				<tr>
 					<td>차량명</td>
-					<td><input type="text" name="car_name" id="car_name">&nbsp;(원)</td>
+					<td><input type="text" name="car_name" id="car_name"></td>
 				</tr>
 				<tr>
 					<td>대여가격</td>
@@ -70,9 +77,10 @@
 				</tr>
 				<tr>
 					<td>연료옵션</td>
-					<td><input type="radio" name="car_fuel" id="car_fuel"
-						value="휘발유" checked>휘발유 &nbsp;&nbsp;&nbsp;&nbsp;<input
-						type="radio" name="car_fuel" id="car_fuel" value="전기">전기</td>
+					<td><label><input type="radio" name="car_fuel"
+							id="car_fuel1" value="휘발유" checked>휘발유</label>
+						&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio"
+							name="car_fuel" id="car_fuel" value="전기">전기</label></td>
 				</tr>
 				<tr>
 					<td>최대 승차 인원</td>
@@ -97,11 +105,12 @@
 				</tr>
 				<tr>
 					<td>차량 옵션</td>
-					<td><input type="checkbox" name="car_option" id="car_option"
-						value="네비게이션">네비게이션&nbsp;&nbsp;&nbsp;&nbsp; <input
-						type="checkbox" name="car_option" id="car_option" value="운전석 에어백">운전석
-						에어백&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox"
-						name="car_option" id="car_option" value="블랙박스">블랙박스</td>
+					<td><label><input type="checkbox" name="car_option"
+							id="car_option" value="네비게이션">네비게이션</label>&nbsp;&nbsp;&nbsp;&nbsp;
+						<label><input type="checkbox" name="car_option"
+							id="car_option" value="운전석 에어백">운전석에어백</label>
+						&nbsp;&nbsp;&nbsp;&nbsp; <label><input type="checkbox"
+							name="car_option" id="car_option" value="블랙박스">블랙박스</label></td>
 				</tr>
 				<tr>
 					<td>이미지 업로드</td>

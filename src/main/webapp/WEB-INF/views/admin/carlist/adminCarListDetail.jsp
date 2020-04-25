@@ -1,41 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="/resources/include/js/common.js"></script>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
 		// 첨부파일 이미지 보여주기 위한 속성 추가
-/* 		var file = "<c:out value = '${vo.car_image}'/>";
-		if(file != ""){ */
-			$("#fileImage").attr({
-				src:"/uploadStorage/carList/${vo.car_image}",
-				width:"450px",
-				height:"200px"
-			})
-	/* 	} */
+		/* 		var file = "<c:out value = '${vo.car_image}'/>";
+		 if(file != ""){ */
+		$("#fileImage").attr({
+			src : "/uploadStorage/carList/${vo.car_image}",
+			width : "450px",
+			height : "200px"
+		})
+		/* 	} */
 		//목록으로 버튼 클릭 시
 		$("#carListBtn").click(function() {
 			location.href = "/admin/carlist/carList";
 		})
 		//수정하기 버튼 클릭 시
 		$("#updateBtn").click(function() {
-			$("#detail").attr({
-				"method" : "POST",
-				"action" : "/admin/carlist/carListUpdateForm"
-			})
-			$("#detail").submit();
-
+			if (confirm("수정하시겠습니까?") == true) {
+				$("#detail").attr({
+					"method" : "POST",
+					"action" : "/admin/carlist/carListUpdateForm"
+				})
+				$("#detail").submit();
+			} else {
+				alert("취소되었습니다.");
+				location.href = "/admin/carlist/carList";
+			}
 		})
 
 		//삭제하기 버튼 클릭 시
 		$("#deleteBtn").click(function() {
-			confirm("삭제하시겠습니까?");
-			$("#detail").attr({
-				"method" : "POST",
-				"action" : "/admin/carlist/carLsitDelete"
-			})
-			$("#detail").submit();
+			if (confirm("삭제하시겠습니까?") == true) {
+				$("#detail").attr({
+					"method" : "POST",
+					"action" : "/admin/carlist/carLsitDelete"
+				})
+				alert("삭제되었습니다.");
+				$("#detail").submit();
+			} else {
+				alert("취소되었습니다.");
+				location.href = "/admin/carlist/carList";
+			}
 		})
 	});
 </script>
@@ -44,8 +54,8 @@
 	<div class="table-responsive">
 		<form id="detail" name="detail" method="post">
 			<input type="hidden" id="car_model_number" name="car_model_number"
-				value="${vo.car_model_number}" />
-				<input type="hidden" name="car_image" id="car_image" value="${vo.car_image}"/>
+				value="${vo.car_model_number}" /> <input type="hidden"
+				name="car_image" id="car_image" value="${vo.car_image}" />
 		</form>
 		<table class="table table-bordered">
 			<tr>

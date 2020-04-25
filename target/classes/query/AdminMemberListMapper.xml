@@ -37,6 +37,7 @@
 		( SELECT list.*, ROWNUM AS RNUM
 		FROM (
 		<include refid="memCommon"></include>
+		ORDER BY mem_id ASC
 		) list
 		)
 		<where>

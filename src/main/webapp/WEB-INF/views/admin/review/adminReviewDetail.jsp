@@ -12,41 +12,46 @@
 
 		// 댓글 등록/수정 버튼 클릭 시
 		$("#updateBtn").click(function() {
-			confirm("댓글을 등록하시겠습니까?")
-			{
-
+			if (confirm("댓글을 등록/수정하시겠습니까?") == true) {
 				$("#detail").attr({
 					"method" : "POST",
 					"action" : "/admin/reviewboard/reDetailUpdate"
 				})
 				$("#detail").submit();
 				alert("등록되었습니다.");
+			} else {
+				alert("취소되었습니다.");
+				location.href = "/admin/reviewboard/review";
 			}
 		})
 
 		// 댓글 답변 삭제 버튼 클릭시
 		$("#reDeleteBtn").click(function() {
-			confirm("댓글을 삭제하시겠습니까?")
-			{
+			if (confirm("댓글을 삭제하시겠습니까?") == true) {
 				$("#detail").attr({
 					"method" : "POST",
 					"action" : "/admin/reviewboard//reReDelete"
 				})
 				$("#detail").submit();
 				alert("댓글 답변이 삭제되었습니다.");
+			} else {
+				alert("취소되었습니다.");
+				location.href = "/admin/reviewboard/review";
 			}
 		})
 
 		// 후기글 삭제하기 버튼 클릭 시
 		$("#deleteBtn").click(function() {
-			confirm("삭제하시겠습니까?")
-			{
+			if (confirm("삭제하시겠습니까?") == true) {
 				$("#detail").attr({
 					"method" : "POST",
 					"action" : "/admin/reviewboard/reListDelete"
 				})
 				$("#detail").submit();
 				alert("삭제되었습니다.");
+			} else {
+				alert("취소되었습니다.");
+				location.href = "/admin/reviewboard/review";
 			}
 		})
 	});

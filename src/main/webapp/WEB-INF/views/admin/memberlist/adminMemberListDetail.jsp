@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		//목록으로 버튼 클릭 시
@@ -9,12 +10,15 @@
 		})
 		//저장 버튼 클릭 시
 		$("#updateBtn").click(function() {
-			if (confirm("수정하시겠습니까?")) {
+			if (confirm("수정하시겠습니까?") == true) {
 				$("#update").attr({
 					"method" : "POST",
 					"action" : "/admin/memberlist/memberListDetail"
 				})
 				$("#update").submit();
+			} else {
+				alert("취소되었습니다.");
+				location.href = "/admin/memberlist/memberList";
 			}
 
 		})

@@ -75,7 +75,7 @@ public class AdminCarListServiceImpl implements AdminCarListService {
 		if (vo.getOrder_by() == null)
 			vo.setOrder_by("car_model_number");
 		if (vo.getOrder_sc() == null)
-			vo.setOrder_sc("DESC");
+			vo.setOrder_sc("ASC");
 
 		//페이징 설정
 		if (!vo.getKeyword().equals("")) {

@@ -45,11 +45,10 @@ public class AdminMemberListServiceImpl implements AdminMemberListService {
 		Paging.setPage(vo);
 
 		/*
-		 * // 정렬에 대한 기본값 설정 if (vo.getOrder_by() == null)
-		 * vo.setOrder_by("car_model_number"); if (vo.getOrder_sc() == null)
-		 * vo.setOrder_sc("DESC");
+		 * // 정렬에 대한 기본값 설정 if (vo.getOrder_by() == null) vo.setOrder_by("mem_id"); if
+		 * (vo.getOrder_sc() == null) vo.setOrder_sc("ASC");
 		 */
-		
+
 		// 페이징 설정
 		if (!vo.getKeyword().equals("")) {
 			vo.setStart_row("");

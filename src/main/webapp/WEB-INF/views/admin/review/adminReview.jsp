@@ -142,9 +142,9 @@
 							<tr>
 								<td id="btd1"><label>검색조건</label> <select id="search"
 									name="search" class="form-control">
-										<option value="all">전체</option>
 										<option value="mem_id">ID</option>
 										<option value="re_title">제목</option>
+										<option value="all">전체</option>
 								</select></td>
 							</tr>
 						</table>

@@ -167,10 +167,10 @@
 							<tr>
 								<td id="btd1"><label>검색조건</label> <select id="search"
 									name="search" class="form-control">
-										<option value="all">전체</option>
 										<option value="car_name">차량명</option>
 										<option value="car_option">차량옵션</option>
 										<option value="car_fuel">연료옵션</option>
+										<option value="all">전체리스트</option>
 								</select></td>
 							</tr>
 						</table>

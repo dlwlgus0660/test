@@ -1,41 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
-		
+
 		var value = "${vo.car_image}";
-		if(value != ""){
+		if (value != "") {
 			var img = $("<img>");
 			$('#imgView').hover(function() {
 				img.attr({
-					src:"/uploadStorage/carList/${vo.car_image}",
+					src : "/uploadStorage/carList/${vo.car_image}",
 					width : "450px",
 					height : "200px"
 				});
 				img.addClass("imgViewData");
 				$('#imgArea').append(img);
-			},function(){
+			}, function() {
 				img.remove();
 			});
-		}else{
+		} else {
 			$('#imgView').hide();
 		}
-		
+
 		//목록으로 버튼 클릭 시
 		$("#listBtn").click(function() {
 			location.href = "/admin/carlist/carList";
 		})
+
 		//수정완료 버튼 클릭 시
 		$("#updateBtn").click(function() {
-			if (confirm("수정하시겠습니까?")) {
+			if (confirm("수정하시겠습니까?") == true) {
 				$("#update").attr({
 					"method" : "POST",
 					"action" : "/admin/carlist/carListUpdate"
 				})
+				alert("수정되었습니다.");
 				$("#update").submit();
+			} else {
+				alert("취소되었습니다.");
+				location.href = "/admin/carlist/carList";
 			}
 
 		})
@@ -48,8 +54,8 @@
 	<div class="table-responsive">
 		<form id="update" name="update" enctype="multipart/form-data">
 			<input type="hidden" id="car_model_number" name="car_model_number"
-				value="${vo.car_model_number}">
-				<input type="hidden" name="car_image" id="car_image" value="${vo.car_image}"/>
+				value="${vo.car_model_number}"> <input type="hidden"
+				name="car_image" id="car_image" value="${vo.car_image}" />
 			<table class="table table-bordered">
 				<tr>
 					<td>차량명</td>
@@ -64,9 +70,9 @@
 				<tr>
 					<td>연료옵션</td>
 					<td>${vo.car_fuel}<br>[수정]&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="car_fuel" id="car_fuel" value="휘발유"
-						checked>휘발유&nbsp;&nbsp;&nbsp; <input type="radio"
-						name="car_fuel" id="car_fuel" value="전기">전기
+						<label><input type="radio" name="car_fuel" id="car_fuel"
+							value="휘발유" checked>휘발유</label>&nbsp;&nbsp;&nbsp; <label><input
+							type="radio" name="car_fuel" id="car_fuel" value="전기">전기</label>
 					</td>
 				</tr>
 				<tr>
@@ -96,19 +102,18 @@
 				<tr>
 					<td>차량 옵션</td>
 					<td>${vo.car_option}<br>[수정]&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;
-						<input type="checkbox" name="car_option" id="car_option"
-						value="네비게이션">네비게이션 <input type="checkbox"
-						name="car_option" id="car_option" value="운전석 에어백">운전석 에어백
-						<input type="checkbox" name="car_option" id="car_option"
-						value="블랙박스">블랙 박스
+						<label><input type="checkbox" name="car_option"
+							id="car_option" value="네비게이션">네비게이션</label><label><input
+							type="checkbox" name="car_option" id="car_option" value="운전석 에어백">운전석
+							에어백</label> <label><input type="checkbox" name="car_option"
+							id="car_option" value="블랙박스">블랙 박스</label>
 					</td>
 				</tr>
 				<tr>
 					<td>이미지</td>
-					<td><input type="file" name="file" id="file">
-					<span id="imgView">기존 이미지파일명 : ${vo.car_image}<span id="imgArea">
-					</span></span>
-					</td>
+					<td><input type="file" name="file" id="file"> <span
+						id="imgView">기존 이미지파일명 : ${vo.car_image}<span id="imgArea">
+						</span></span></td>
 				</tr>
 			</table>
 		</form>
