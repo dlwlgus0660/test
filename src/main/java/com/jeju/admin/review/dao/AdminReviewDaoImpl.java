@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.jeju.admin.car.list.vo.AdminCarListVO;
 import com.jeju.admin.review.vo.AdminReviewVO;
 
 @Repository
@@ -17,8 +18,8 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 
 	// 후기 전체 리스트
 	@Override
-	public List<AdminReviewVO> list() throws Exception {
-		return sqlSession.selectList("list");
+	public List<AdminReviewVO> list(AdminReviewVO vo) throws Exception {
+		return sqlSession.selectList("list", vo);
 	}
 
 	// 후기 상세 페이지
@@ -43,6 +44,12 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 	@Override
 	public int reDelete(int re_number) {
 		return sqlSession.update("reDelete", re_number);
+	}
+
+	// 전체 레코드 수 구현
+	@Override
+	public int revListCnt(AdminReviewVO vo) {
+		return (Integer) sqlSession.selectOne("revListCnt");
 	}
 
 }

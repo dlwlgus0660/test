@@ -2,7 +2,9 @@ package com.jeju.admin.qna.vo;
 
 import java.sql.Date;
 
-public class AdminQnaVO {
+import com.jeju.admin.common.vo.CommonVO;
+
+public class AdminQnaVO extends CommonVO {
 	private int inq_number = 0;
 	private String mem_id = "";
 	private String mem_name = "";

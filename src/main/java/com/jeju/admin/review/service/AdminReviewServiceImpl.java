@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.jeju.admin.car.list.vo.AdminCarListVO;
+import com.jeju.admin.common.page.Paging;
 import com.jeju.admin.review.dao.AdminReviewDao;
 import com.jeju.admin.review.vo.AdminReviewVO;
 
@@ -17,8 +19,25 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 
 	// 후기 전체 리스트
 	@Override
-	public List<AdminReviewVO> list() throws Exception {
-		return adminReviewDao.list();
+	public List<AdminReviewVO> list(AdminReviewVO vo) throws Exception {
+
+		List<AdminReviewVO> aList = null;
+
+		// 페이지 세팅
+		Paging.setPage(vo);
+
+		/*
+		 * // 정렬에 대한 기본값 설정 if (vo.getOrder_by() == null) vo.setOrder_by("RE_NUMBER");
+		 * if (vo.getOrder_sc() == null) vo.setOrder_sc("DESC");
+		 */
+
+		// 페이징 설정
+		if (!vo.getKeyword().equals("")) {
+			vo.setStart_row("");
+			vo.setEnd_row("");
+		}
+		aList = adminReviewDao.list(vo);
+		return aList;
 	}
 
 	// 후기 상세 페이지
@@ -64,6 +83,14 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 			result = 0;
 		}
 		return result;
+	}
+
+	// 전체 레코드 수 구현
+	@Override
+	public int revListCnt(AdminReviewVO vo) {
+		int countNum = 0;
+		countNum = adminReviewDao.revListCnt(vo);
+		return countNum;
 	}
 
 }

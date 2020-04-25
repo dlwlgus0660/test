@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jeju.admin.common.util.Util;
 import com.jeju.admin.qna.controller.AdminQnaController;
 import com.jeju.admin.review.service.AdminReviewService;
 import com.jeju.admin.review.vo.AdminReviewVO;
@@ -28,10 +29,18 @@ public class AdminReviewController {
 
 	// 1. 후기글 전체 리스트
 	@RequestMapping("/review")
-	public ModelAndView list(HttpSession session) throws Exception {
+	public ModelAndView list(@ModelAttribute AdminReviewVO vo, HttpSession session) throws Exception {
 		log.info("review list 호출 성공");
 
-		List<AdminReviewVO> list = adminReviewService.list();
+		// 전체 레코드수 구현
+		int total = adminReviewService.revListCnt(vo);
+		log.info("total = " + total);
+
+		// 글번호 재설정
+		int count = total - (Util.nvl(vo.getPage()) - 1) * Util.nvl(vo.getPageSize());
+		log.info("count = " + count);
+
+		List<AdminReviewVO> list = adminReviewService.list(vo);
 		ModelAndView mav = new ModelAndView();
 		ModelAndView rev = new ModelAndView();
 
@@ -41,6 +50,9 @@ public class AdminReviewController {
 		} else {
 			mav.setViewName("admin/review/adminReview");
 			mav.addObject("list", list);
+			mav.addObject("count", count);
+			mav.addObject("total", total);
+			mav.addObject("data", vo);
 			return mav;
 		}
 	}

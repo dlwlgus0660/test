@@ -15,12 +15,6 @@ public class AdminMemberListDaoImpl implements AdminMemberListDao {
 	@Inject
 	private SqlSession sqlsession;
 
-	// 회원 리스트 전체 조회
-	@Override
-	public List<AdminMemberListVO> memList() throws Exception {
-		return sqlsession.selectList("memList");
-	}
-
 	// 회원 리스트 상세 조회
 	@Override
 	public AdminMemberListVO memDetail(String mem_id) throws Exception {
@@ -31,6 +25,18 @@ public class AdminMemberListDaoImpl implements AdminMemberListDao {
 	@Override
 	public int memUpdate(AdminMemberListVO vo) {
 		return sqlsession.update("memUpdate",vo);
+	}
+
+	// 회원 리스트 전체 조회
+	@Override
+	public List<AdminMemberListVO> memList(AdminMemberListVO vo) throws Exception {
+		return sqlsession.selectList("memList", vo);
+	}
+
+	//전체 레코드 수 구현
+	@Override
+	public int memListCnt(AdminMemberListVO vo) {
+		return (Integer)sqlsession.selectOne("memListCnt");
 	}
 
 }

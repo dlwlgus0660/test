@@ -2,7 +2,10 @@ package com.jeju.admin.member.list.vo;
 
 import java.sql.Date;
 
-public class AdminMemberListVO {
+
+import com.jeju.admin.common.vo.CommonVO;
+
+public class AdminMemberListVO extends CommonVO {
 	private String mem_id = "";
 	private String mem_name = "";
 	private String mem_gender = "";

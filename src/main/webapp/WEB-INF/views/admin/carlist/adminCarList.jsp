@@ -61,6 +61,8 @@
 			}
 			goPage(1);
 		});
+
+		// 정렬 삼각형 버튼 클릭 시
 		$(".order").click(function() {
 			var order_by = $(this).attr("data-value");
 			console.log("선택값 : " + order_by);
@@ -100,13 +102,12 @@
 		<h2 class="sub-header">차량 조회</h2>
 	</div>
 	<div>
-		<label> 등록 차량 : <label style="color: red">${total}</label>
-		</label>
+		<label> 등록 차량 : </label><label style="color: red">${total}</label>
+
 	</div>
 	<%--====================리스트 시작 =============== --%>
 	<div id="carList" class="table-responsive">
 		<table class="table table-bordered">
-
 			<tr>
 				<th data-value="car_model_number" class="order">모델고유번호<c:choose>
 						<c:when
@@ -175,14 +176,7 @@
 						</table>
 						<input type="text" name="keyword" id="keyword"
 							placeholder="검색어를 입력하세요." /> <input type="button"
-							class="btn btn-primary" id="searchData" value="검색" />&nbsp;&nbsp;&nbsp;한페이지에&nbsp;&nbsp;
-						<select id="pageSize" name="pageSize">
-							<option value="1">1줄</option>
-							<option value="3">3줄</option>
-							<option value="5">5줄</option>
-							<option value="7">7줄</option>
-							<option value="10">10줄</option>
-						</select>
+							class="btn btn-primary" id="searchData" value="검색" />
 					</div>
 				</div>
 			</form>

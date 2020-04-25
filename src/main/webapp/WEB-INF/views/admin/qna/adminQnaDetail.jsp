@@ -35,6 +35,7 @@
 				$("#detail").submit();
 				alert("댓글 답변이 삭제되었습니다.");
 			}
+
 		})
 
 		// 문의글 삭제하기 버튼 클릭 시
@@ -43,7 +44,7 @@
 			{
 				$("#detail").attr({
 					"method" : "POST",
-					"action" : "/admin/qnaboard/qnaLsitDelete"
+					"action" : "/admin/qnaboard/qnaListDelete"
 				})
 				$("#detail").submit();
 				alert("삭제되었습니다.");
@@ -70,19 +71,21 @@
 				</tr>
 				<tr>
 					<td>제목</td>
-					<td colspan="5">${vo.inq_title}</td>
+					<td colspan="7">${vo.inq_title}</td>
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td colspan="5">${vo.inq_content}</td>
+					<td colspan="7">${vo.inq_content}</td>
 				</tr>
 				<tr>
 					<td>댓글 답변</td>
-					<td colspan="4"><textarea id="inq_reply" name="inq_reply">${vo.inq_reply}</textarea></td>
-					<td><input type="button" value="등록/수정" id="updateBtn"
-						class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp; <input
-						type="button" value="답변 삭제" id="reDeleteBtn"
-						class="btn btn-primary"></td>
+					<td colspan="5"><textarea id="inq_reply" name="inq_reply"
+							style="width: 800px; height: 100px; resize: none">${vo.inq_reply}</textarea></td>
+
+					<td colspan="2"><input type="button" value="등록/수정"
+						id="updateBtn" class="btn btn-primary">
+						&nbsp;&nbsp;&nbsp;&nbsp; <input type="button" value="답변 삭제"
+						id="reDeleteBtn" class="btn btn-primary"></td>
 				</tr>
 			</table>
 		</form>

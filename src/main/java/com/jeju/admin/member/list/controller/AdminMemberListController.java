@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jeju.admin.common.util.Util;
 import com.jeju.admin.member.list.service.AdminMemberListService;
 import com.jeju.admin.member.list.vo.AdminMemberListVO;
 
@@ -27,11 +28,21 @@ public class AdminMemberListController {
 
 	// 1.회원 리스트
 	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
-	public ModelAndView memList(HttpSession session) throws Exception {
-
+	public ModelAndView memList(@ModelAttribute AdminMemberListVO vo, HttpSession session) throws Exception {
+		
+		// vo.setOrder_by("mem_id");  정렬 사용시 강제 주입 필요..
+		
 		log.info("memList 호출 성공");
 
-		List<AdminMemberListVO> memList = adminMemberListService.memList();
+		// 전체 레코드수 구현
+		int total = adminMemberListService.memListCnt(vo);
+		log.info("total = " + total);
+
+		// 글번호 재설정
+		int count = total - (Util.nvl(vo.getPage()) - 1) * Util.nvl(vo.getPageSize());
+		log.info("count = " + count);
+
+		List<AdminMemberListVO> memList = adminMemberListService.memList(vo);
 		ModelAndView mav = new ModelAndView();
 		ModelAndView list = new ModelAndView();
 
@@ -41,6 +52,9 @@ public class AdminMemberListController {
 		} else {
 			mav.setViewName("admin/memberlist/adminMemberList");
 			mav.addObject("memList", memList);
+			mav.addObject("count", count);
+			mav.addObject("total", total);
+			mav.addObject("data", vo);
 			return mav;
 		}
 	}

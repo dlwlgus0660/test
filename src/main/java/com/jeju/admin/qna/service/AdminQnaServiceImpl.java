@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.jeju.admin.car.list.vo.AdminCarListVO;
+import com.jeju.admin.common.page.Paging;
 import com.jeju.admin.qna.dao.AdminQnaDao;
 import com.jeju.admin.qna.vo.AdminQnaVO;
 
@@ -17,8 +19,25 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 
 	// 게시글 전체 리스트
 	@Override
-	public List<AdminQnaVO> list() throws Exception {
-		return adminQnaDao.list();
+	public List<AdminQnaVO> list(AdminQnaVO vo) throws Exception {
+		List<AdminQnaVO> aList = null;
+
+		// 페이지 세팅
+		Paging.setPage(vo);
+
+		/*
+		 * // 정렬에 대한 기본값 설정 if (vo.getOrder_by() == null) vo.setOrder_by("inq_number");
+		 * if (vo.getOrder_sc() == null) vo.setOrder_sc("DESC");
+		 */
+		
+		//페이징 설정
+		if (!vo.getKeyword().equals("")) {
+			vo.setStart_row("");
+			vo.setEnd_row("");
+		}
+
+		aList = adminQnaDao.list(vo);
+		return aList;
 	}
 
 	// 상세 페이지
@@ -66,4 +85,10 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 		return result;
 	}
 
+	// 전체 레코드 수 구현
+	public int qnaListCnt(AdminQnaVO vo) {
+		int countNum = 0;
+		countNum = adminQnaDao.qnaListCnt(vo);
+		return countNum;
+	}
 }

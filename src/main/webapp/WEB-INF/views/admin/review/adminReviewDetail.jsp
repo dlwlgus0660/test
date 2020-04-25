@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 
@@ -75,7 +76,8 @@
 				</tr>
 				<tr>
 					<td>관리자 댓글</td>
-					<td colspan="4"><textarea id="re_reply" name="re_reply">${vo.re_reply}</textarea></td>
+					<td colspan="4"><textarea id="re_reply" name="re_reply"
+							style="width: 800px; height: 100px; resize: none">${vo.re_reply}</textarea></td>
 					<td><input type="button" value="등록/수정" id="updateBtn"
 						class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp; <input
 						type="button" value="답변 삭제" id="reDeleteBtn"
@@ -85,8 +87,8 @@
 		</form>
 		<div>
 			<input type="button" value="목록으로" id="reviewListBtn"
-				class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="삭제하기"
-				id="deleteBtn" class="btn btn-primary">
+				class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp;<input
+				type="button" value="삭제하기" id="deleteBtn" class="btn btn-primary">
 		</div>
 	</div>
 </div>

@@ -77,6 +77,7 @@ public class AdminCarListServiceImpl implements AdminCarListService {
 		if (vo.getOrder_sc() == null)
 			vo.setOrder_sc("DESC");
 
+		//페이징 설정
 		if (!vo.getKeyword().equals("")) {
 			vo.setStart_row("");
 			vo.setEnd_row("");

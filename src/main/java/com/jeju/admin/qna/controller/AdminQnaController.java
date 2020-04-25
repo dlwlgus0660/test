@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jeju.admin.common.util.Util;
 import com.jeju.admin.qna.service.AdminQnaService;
 import com.jeju.admin.qna.vo.AdminQnaVO;
 
@@ -27,10 +28,20 @@ public class AdminQnaController {
 
 	// 1. 문의글 전체 리스트
 	@RequestMapping("/qnaboard")
-	public ModelAndView list(HttpSession session) throws Exception {
+	public ModelAndView list(@ModelAttribute AdminQnaVO vo, HttpSession session) throws Exception {
 		log.info("qna list 호출 성공");
+		
+		//vo.setOrder_by("inq_number"); 정렬 사용 시 강제 주입 필요...
 
-		List<AdminQnaVO> list = adminQnaService.list();
+		// 전체 레코드수 구현
+		int total = adminQnaService.qnaListCnt(vo);
+		log.info("total = " + total);
+
+		// 글번호 재설정
+		int count = total - (Util.nvl(vo.getPage()) - 1) * Util.nvl(vo.getPageSize());
+		log.info("count = " + count);
+
+		List<AdminQnaVO> list = adminQnaService.list(vo);
 		ModelAndView mav = new ModelAndView();
 		ModelAndView qna = new ModelAndView();
 
@@ -40,6 +51,9 @@ public class AdminQnaController {
 		} else {
 			mav.setViewName("admin/qna/adminQna");
 			mav.addObject("list", list);
+			mav.addObject("count", count);
+			mav.addObject("total", total);
+			mav.addObject("data", vo);
 			return mav;
 		}
 	}
@@ -78,8 +92,8 @@ public class AdminQnaController {
 		return "redirect:/admin/qnaboard/qnaboard";
 	}
 
-	// 3. 리스트 삭제
-	@RequestMapping("/qnaLsitDelete")
+	// 3. 글 삭제
+	@RequestMapping("/qnaListDelete")
 	public String delete(@RequestParam int inq_number) throws Exception {
 		adminQnaService.delete(inq_number);
 		return "redirect:/admin/qnaboard/qnaboard";

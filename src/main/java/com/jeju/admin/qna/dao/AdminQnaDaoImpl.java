@@ -17,8 +17,8 @@ public class AdminQnaDaoImpl implements AdminQnaDao {
 
 	// 전체 리스트
 	@Override
-	public List<AdminQnaVO> list() throws Exception {
-		return sqlSession.selectList("list");
+	public List<AdminQnaVO> list(AdminQnaVO vo) throws Exception {
+		return sqlSession.selectList("list", vo);
 	}
 
 	// 상세 페이지
@@ -43,6 +43,11 @@ public class AdminQnaDaoImpl implements AdminQnaDao {
 	@Override
 	public int reDelete(int inq_number) {
 		return sqlSession.update("reDelete", inq_number);
+	}
+
+	// 전체 레코드 수 구현
+	public int qnaListCnt(AdminQnaVO vo) {
+		return (Integer) sqlSession.selectOne("qnaListCnt");
 	}
 
 }

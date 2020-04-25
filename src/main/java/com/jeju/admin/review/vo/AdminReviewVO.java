@@ -2,7 +2,9 @@ package com.jeju.admin.review.vo;
 
 import java.sql.Date;
 
-public class AdminReviewVO {
+import com.jeju.admin.common.vo.CommonVO;
+
+public class AdminReviewVO extends CommonVO {
 
 	private int re_number = 0;
 	private String mem_id = "";
