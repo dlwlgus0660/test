@@ -16,6 +16,8 @@
 		<org.apache.tiles-version>3.0.5</org.apache.tiles-version>
 	</properties>
 	<dependencies>
+
+		
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -253,13 +255,6 @@
 			<groupId>org.imgscalr</groupId>
 			<artifactId>imgscalr-lib</artifactId>
 			<version>4.2</version>
-		</dependency>
-
-		<!-- 파일 업로드 -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.4</version>
 		</dependency>
 
 	</dependencies>

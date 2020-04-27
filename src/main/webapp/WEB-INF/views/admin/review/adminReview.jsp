@@ -4,6 +4,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
 
+
+<style type="text/css">
+td, th{
+	text-align: center;
+}
+</style>
+
 <script type="text/javascript"
 	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
@@ -105,7 +112,7 @@
 	<div id="reviewList" class="table-responsive">
 		<table class="table table-bordered">
 			<tr>
-				<th>글 번호</th>
+				<th style="width: 150px;">글 번호</th>
 				<th>ID</th>
 				<th>제목</th>
 				<th>작성일</th>

@@ -6,14 +6,10 @@
 
 	<!-- 회원 예약 내역 -->
 	<select id="carResList" resultType="AdminCarReservation">
-		SELECT ren_number,
-		ren_car_number, car_name, rsv_number, rsv_name, ren_license_number,
-		ren_take_date, ren_state, ren_return_date, ren_overtime, ren_add_price
+		SELECT *
 		FROM RENTAL
-		where ren_state = '입금완료(인수대기)' or ren_state = '렌트중' or
-		ren_state = '반납완료'
+		WHERE ren_state = '입금완료(인수대기)' or ren_state = '렌트중' or ren_state = '반납완료'
 		order by ren_car_number desc
 	</select>
-
 
 </mapper>

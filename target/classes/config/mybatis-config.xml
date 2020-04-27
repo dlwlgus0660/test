@@ -7,8 +7,7 @@
 		<typeAlias
 			type="com.jeju.admin.member.reservation.vo.AdminMemberReservationVO"
 			alias="AdminMemberReservation" />
-		<typeAlias 
-			type="com.jeju.admin.refund.vo.AdminRefundVO"
+		<typeAlias type="com.jeju.admin.refund.vo.AdminRefundVO"
 			alias="AdminRefund" />
 		<typeAlias
 			type="com.jeju.admin.car.reservation.vo.AdminCarReservationVO"
@@ -29,5 +28,4 @@
 			type="com.jeju.admin.review.vo.AdminReviewVO"
 			alias="adminReview" />	
 	</typeAliases>
-
 </configuration>

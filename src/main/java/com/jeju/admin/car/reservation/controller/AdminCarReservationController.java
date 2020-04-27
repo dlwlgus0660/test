@@ -43,7 +43,6 @@ public class AdminCarReservationController {
 			mav.setViewName("admin/carreservation/adminCarReservation");
 			return mav;
 		}
-		
-		
+			
 	}
 }

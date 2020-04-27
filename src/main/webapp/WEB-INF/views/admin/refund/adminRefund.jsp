@@ -2,11 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>환불 관리</title>
 
 <style type="text/css">
 td{
@@ -21,8 +16,7 @@ text-align: center;
 	end_date = "<c:out value='${data.end_date}'/>";
 	keyword = "<c:out value='${data.keyword}'/>";
 </script> -->
-</head>
-<body>
+
 	<h2 class="sub-header">환불 관리</h2>
 	<div class="table-responsive">
 		<table class="table table-bordered">
@@ -86,5 +80,3 @@ text-align: center;
 		</div>
 	</div> --%>
 	</div>
-</body>
-</html>

@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jeju.admin.car.list.service.AdminCarListService;
 import com.jeju.admin.car.list.vo.AdminCarListVO;
 import com.jeju.admin.common.file.FileUploadUtil;
-import com.jeju.admin.common.page.Paging;
 import com.jeju.admin.common.util.Util;
 
 @Controller

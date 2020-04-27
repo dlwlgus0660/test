@@ -6,16 +6,112 @@
 	namespace="com.jeju.admin.member.reservation.dao.AdminMemberReservationDao">
 
 	<!-- 회원 예약 내역 -->
-	<select id="memResList" resultType="AdminMemberReservation">
-		SELECT rsv_number, mem_id,
-		ren_car_number, car_name ,rsv_name, rsv_apply_date, rsv_state,
-		rsv_price, rsv_expected_date
+	<!-- <select id="memResList" resultType="AdminMemberReservation"> SELECT 
+		* FROM RESERVATION where rsv_state = '입금대기' or rsv_state='입금완료(인수대기)' or 
+		rsv_state='' or rsv_state='반납완료' order by rsv_number desc </select> -->
+
+	<!-- 게시물 검색 쿼리 분리 -->
+	<sql id="memResCommon">
+		SELECT *
 		FROM RESERVATION
-		where rsv_state = '입금대기'
-		or rsv_state='입금완료(인수대기)' or rsv_state='' or rsv_state='반납완료'
-		order by
-		rsv_number desc
+		<where>
+			<if test="search=='rsv_number'">
+					<![CDATA[rsv_number LIKE '%'|| #{keyword} ||'%']]>
+			</if>
+			<if test="search=='rsv_name'">
+					<![CDATA[rsv_name LIKE '%'|| #{keyword} ||'%']]>
+			</if>
+			<if test="search=='rsv_state'">
+					<![CDATA[rsv_state LIKE '%'|| #{keyword} ||'%']]>
+			</if>
+		</where>
+	</sql>
+
+	<!-- 게시물 전체 조회 -->
+	<select id="memResList" parameterType="AdminMemberReservation"
+		resultType="AdminMemberReservation">
+		<!-- Board - boardList -->
+		SELECT *
+		FROM
+		( SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="memResCommon"></include>
+		<choose>
+			<when test="order_by=='rsv_number'">
+				ORDER BY rsv_number
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		) list
+		)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
 	</select>
 
+	<!-- 게시물 카운트 페이징 -->
+	<select id="memResListCnt" parameterType="AdminMemberReservation"
+		resultType="int">
+		<!-- Board - boardListCnt -->
+		SELECT NVL(count(1), 0) FROM
+		( SELECT list.*, ROWNUM AS RNUM
+		FROM(
+		<include refid="memResCommon"></include>
+		ORDER BY rsv_number desc
+		) list
+		)
+	</select>
+
+
+	<!-- 회원 예약 상세 내역 -->
+	<select id="detail" resultType="AdminMemberReservation"
+		parameterType="int">
+		SELECT *
+		FROM RESERVATION
+		WHERE rsv_number = #{rsv_number}
+	</select>
+
+	<!-- 회원 예약 상세 내역 업데이트 -->
+	<update id="update" parameterType="AdminMemberReservation">
+		UPDATE RESERVATION
+		SET
+		rsv_state = #{rsv_state}
+		where rsv_number = #{rsv_number}
+	</update>
+
+	<!-- 차량 예약 관리로 정보 인설트 -->
+<!-- 	<insert id="">
+		<selectKey keyProperty="ren_number" resultType="int"
+			order="BEFORE">
+			select ren_number_seq.nextval from dual
+		</selectKey>
+		INSERT INTO RENTAL VALUES(
+		ren_number,
+		#{car_model_number},
+		#{rsv_number},
+		#{mem_id},
+		#{ren_take_date},
+		#{ren_state},
+		#{ren_return_date},
+		#{ren_expected_date},
+		#{ren_add_price},
+		#{ren_overtime},
+		#{ren_license_number},
+		#{ren_car_number},
+		#{car_name},
+		#{rsv_name}
+		)
+	</insert> -->
 
 </mapper>

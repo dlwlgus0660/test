@@ -2,27 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>차량 예약 관리</title>
 
 <style type="text/css">
 td{
 text-align: center;
 }
 </style>
-
 <script type="text/javascript" src="/resources/include/js/board.js"></script>
-<!-- <script type="text/javascript">
-	search = "<c:out value='${data.search}'/>";
-	start_date = "<c:out value='${data.start_date}'/>";
-	end_date = "<c:out value='${data.end_date}'/>";
-	keyword = "<c:out value='${data.keyword}'/>";
-</script> -->
-</head>
-<body>
+
 	<h2 class="sub-header">차량 예약 관리</h2>
 	<div class="table-responsive">
 		<table class="table table-bordered">
@@ -47,7 +34,7 @@ text-align: center;
 					<c:when test="${not empty carResList }">
 						<c:forEach var="CARRESERVATION" items="${carResList}">
 							<tr>
-								<td>${CARRESERVATION.ren_number }</td>
+								<td><a href="${path}/admin/noticeboard/noticeDetail?nt_number=${CARRESERVATION.ren_number }">${CARRESERVATION.ren_number }</a></td>
 								<td>${CARRESERVATION.ren_car_number }</td>
 								<td>${CARRESERVATION.car_name }</td>
 								<td>${CARRESERVATION.rsv_number }</td>
@@ -93,5 +80,3 @@ text-align: center;
 		</div>
 	</div> --%>
 	</div>
-</body>
-</html>

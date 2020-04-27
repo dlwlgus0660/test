@@ -5,7 +5,6 @@ import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
-import com.jeju.admin.car.list.vo.AdminCarListVO;
 import com.jeju.admin.common.page.Paging;
 import com.jeju.admin.member.list.dao.AdminMemberListDao;
 import com.jeju.admin.member.list.vo.AdminMemberListVO;

@@ -2,12 +2,15 @@ package com.jeju.admin.member.reservation.vo;
 
 import java.sql.Timestamp;
 
-public class AdminMemberReservationVO {
+import com.jeju.admin.common.vo.CommonVO;
+
+public class AdminMemberReservationVO extends CommonVO {
 	private int rsv_number = 0; //예약번호
 	private String mem_id = ""; //아이디
 	private String ren_car_number = ""; //차량 번호
 	private String car_name = "";//차량명
 	private String rsv_name = ""; //예약자명
+	private String rsv_phone = ""; //예약자 핸드폰번호
 	private Timestamp rsv_apply_date; //예약 신청일
 	private String rsv_state = ""; //예약 상태
 	private int rsv_price = 0; //이용금액
@@ -45,6 +48,12 @@ public class AdminMemberReservationVO {
 	public void setRsv_name(String rsv_name) {
 		this.rsv_name = rsv_name;
 	}
+	public String getRsv_phone() {
+		return rsv_phone;
+	}
+	public void setRsv_phone(String rsv_phone) {
+		this.rsv_phone = rsv_phone;
+	}
 	public Timestamp getRsv_apply_date() {
 		return rsv_apply_date;
 	}
@@ -69,6 +78,8 @@ public class AdminMemberReservationVO {
 	public void setRsv_expected_date(Timestamp rsv_expected_date) {
 		this.rsv_expected_date = rsv_expected_date;
 	}
+
+	
 	
 	
 }
