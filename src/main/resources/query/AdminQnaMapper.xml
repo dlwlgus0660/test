@@ -44,11 +44,9 @@
 		) list
 		)
 		<where>
-			<if test="start_row != null and start_row != ''">
-				<if test="end_row != null and end_row != ''">
+			
 					RNUM BETWEEN #{start_row} AND #{end_row}
-				</if>
-			</if>
+			
 		</where>
 	</select>
 

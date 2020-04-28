@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.jeju.admin.car.list.vo.AdminCarListVO;
 import com.jeju.admin.common.page.Paging;
 import com.jeju.admin.qna.dao.AdminQnaDao;
 import com.jeju.admin.qna.vo.AdminQnaVO;
@@ -30,11 +29,8 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 		 * if (vo.getOrder_sc() == null) vo.setOrder_sc("DESC");
 		 */
 		
-		//페이징 설정
-		if (!vo.getKeyword().equals("")) {
-			vo.setStart_row("");
-			vo.setEnd_row("");
-		}
+		System.out.println("start"+vo.getStart_row());
+		System.out.println("end"+vo.getEnd_row());
 
 		aList = adminQnaDao.list(vo);
 		return aList;

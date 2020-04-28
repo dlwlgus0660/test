@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script type="text/javascript"
 	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -53,11 +54,14 @@
 				</tr>
 				<tr>
 					<td>회원 상태</td>
-					<td>현 재 상 태 >>&nbsp;&nbsp;${vo.mem_state}<br>변 경 상 태
-						>>&nbsp;&nbsp;<input type="radio" id="mem_state" name="mem_state"
-						value="활성화">&nbsp;활성화&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-						type="radio" id="mem_state" name="mem_state" value="비활성화">&nbsp;비활성화
-					</td>
+					<td><select name="mem_state" id="mem_state">
+							<c:if test="${vo.mem_state == '활성화' }">
+								<option value="활성화" selected>활성화</option>
+							</c:if>
+							<c:if test="${vo.mem_state == '비활성화' }">
+								<option value="비활성화" selected>비활성화</option>
+							</c:if>
+					</select></td>
 				</tr>
 			</table>
 		</form>

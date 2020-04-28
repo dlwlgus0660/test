@@ -154,7 +154,7 @@ td {
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="4" class="tac">예약 내역이 없습니다.</td>
+							<td colspan="9" class="tac">예약 내역이 없습니다.</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>

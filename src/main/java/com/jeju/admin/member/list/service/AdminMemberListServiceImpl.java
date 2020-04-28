@@ -48,11 +48,6 @@ public class AdminMemberListServiceImpl implements AdminMemberListService {
 		 * (vo.getOrder_sc() == null) vo.setOrder_sc("ASC");
 		 */
 
-		// 페이징 설정
-		if (!vo.getKeyword().equals("")) {
-			vo.setStart_row("");
-			vo.setEnd_row("");
-		}
 
 		aList = adminMemberListDao.memList(vo);
 		return aList;

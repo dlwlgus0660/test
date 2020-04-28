@@ -31,11 +31,6 @@ public class AdminMemberReservationServiceImpl implements AdminMemberReservation
 		if (vo.getOrder_sc() == null)
 			vo.setOrder_sc("ASC");
 
-		// 페이징 설정
-		if (!vo.getKeyword().equals("")) {
-			vo.setStart_row("");
-			vo.setEnd_row("");
-		}
 		aList = adminMemberReservationDao.memResList(vo);
 		return aList;
 	}

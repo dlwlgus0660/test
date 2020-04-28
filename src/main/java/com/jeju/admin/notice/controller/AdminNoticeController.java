@@ -19,14 +19,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jeju.admin.common.file.FileUploadUtil;
 import com.jeju.admin.common.util.Util;
-import com.jeju.admin.member.reservation.controller.AdminMemberReservationController;
 import com.jeju.admin.notice.service.AdminNoticeService;
 import com.jeju.admin.notice.vo.AdminNoticeVO;
 
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminNoticeController {
-	private Logger log = LoggerFactory.getLogger(AdminMemberReservationController.class);
+	private Logger log = LoggerFactory.getLogger(AdminNoticeController.class);
 
 	@Autowired
 	private AdminNoticeService adminNoticeService;
@@ -37,7 +36,7 @@ public class AdminNoticeController {
 
 		log.info("admin adminNotice 호출 성공");
 
-		vo.setOrder_by("nt_number"); // 정렬 때문에 직접 강제로 정렬할 칼럼 값을 오더바이 해줘야 됨 지우면 안돼요 ㅠㅠ
+		vo.setOrder_by("nt_number"); // 정렬 때문에 직접 강제로 정렬할 칼럼 값을 오더바이
 		
 		// 전체 레코드수 구현
 		int total = adminNoticeService.listCnt(vo);

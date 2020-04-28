@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jeju.admin.car.list.vo.AdminCarListVO;
 import com.jeju.admin.common.page.Paging;
 import com.jeju.admin.notice.dao.AdminNoticeDao;
 import com.jeju.admin.notice.vo.AdminNoticeVO;
@@ -32,10 +31,6 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		if (vo.getOrder_sc() == null)
 			vo.setOrder_sc("DESC");
 
-		if (!vo.getKeyword().equals("")) {
-			vo.setStart_row("");
-			vo.setEnd_row("");
-		}
 		list = adminNoticeDao.NoticeList(vo);
 		return list;
 

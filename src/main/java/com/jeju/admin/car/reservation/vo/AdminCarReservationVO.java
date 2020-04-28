@@ -1,20 +1,19 @@
 package com.jeju.admin.car.reservation.vo;
 
-import java.sql.Timestamp;
+import com.jeju.admin.common.vo.CommonVO;
 
-public class AdminCarReservationVO {
+public class AdminCarReservationVO extends CommonVO{
 	private int ren_number = 0; //대여번호
 	private String ren_car_number = ""; //차량번호
 	private String car_name = ""; //차량명
-	private int rsv_number =0; //예약번호
+	private int rsv_number = 0; //예약번호
 	private String rsv_name = "";//예약자명
-	private String ren_license_number="";//운전면허증
-	private Timestamp ren_take_date;//실 대여 일시
+	private String ren_license_number = "";//운전면허증
+	private String ren_take_date = "";//실 대여 일시
 	private String ren_state = ""; //이용 상태
-	private Timestamp ren_return_date;//실 반납 일시
-	private Timestamp ren_overtime;//초과시간
-	private int ren_add_price;//추가 비용
-	
+	private String ren_return_date = "";//실 반납 일시
+	private String ren_overtime = "";//초과시간
+	private int ren_add_price = 0;//추가 비용
 	
 	public int getRen_number() {
 		return ren_number;
@@ -52,10 +51,10 @@ public class AdminCarReservationVO {
 	public void setRen_license_number(String ren_license_number) {
 		this.ren_license_number = ren_license_number;
 	}
-	public Timestamp getRen_take_date() {
+	public String getRen_take_date() {
 		return ren_take_date;
 	}
-	public void setRen_take_date(Timestamp ren_take_date) {
+	public void setRen_take_date(String ren_take_date) {
 		this.ren_take_date = ren_take_date;
 	}
 	public String getRen_state() {
@@ -64,16 +63,16 @@ public class AdminCarReservationVO {
 	public void setRen_state(String ren_state) {
 		this.ren_state = ren_state;
 	}
-	public Timestamp getRen_return_date() {
+	public String getRen_return_date() {
 		return ren_return_date;
 	}
-	public void setRen_return_date(Timestamp ren_return_date) {
+	public void setRen_return_date(String ren_return_date) {
 		this.ren_return_date = ren_return_date;
 	}
-	public Timestamp getRen_overtime() {
+	public String getRen_overtime() {
 		return ren_overtime;
 	}
-	public void setRen_overtime(Timestamp ren_overtime) {
+	public void setRen_overtime(String ren_overtime) {
 		this.ren_overtime = ren_overtime;
 	}
 	public int getRen_add_price() {
@@ -83,6 +82,6 @@ public class AdminCarReservationVO {
 		this.ren_add_price = ren_add_price;
 	}
 	
-	
+
 	
 }

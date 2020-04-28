@@ -11,6 +11,9 @@ text-align: center;
 <script type="text/javascript" src="/resources/include/js/board.js"></script>
 
 	<h2 class="sub-header">차량 예약 관리</h2>
+	<div>
+		<label> 차량 예약 관리 :</label><label style="color: red">${total}</label>
+	</div>
 	<div class="table-responsive">
 		<table class="table table-bordered">
 			<thead>
@@ -34,7 +37,7 @@ text-align: center;
 					<c:when test="${not empty carResList }">
 						<c:forEach var="CARRESERVATION" items="${carResList}">
 							<tr>
-								<td><a href="${path}/admin/noticeboard/noticeDetail?nt_number=${CARRESERVATION.ren_number }">${CARRESERVATION.ren_number }</a></td>
+								<td><a href="${path}/admin/carres/carResDetail?ren_number=${CARRESERVATION.ren_number }">${CARRESERVATION.ren_number }</a></td>
 								<td>${CARRESERVATION.ren_car_number }</td>
 								<td>${CARRESERVATION.car_name }</td>
 								<td>${CARRESERVATION.rsv_number }</td>
@@ -57,26 +60,33 @@ text-align: center;
 			</tbody>
 		</table>
 		<div class="well">
-			<form class="form-inline" id="f_search">
-				<input type="hidden" name="page" id="page" /> <input type="hidden"
-					name="pageSize" id="pageSize" />
-
-			<!-- 검색 리스트 추가 해야됌 -->
-
 			<!-- 옵션박스 / 검색 -->
-			<div class="form-group">
-				<select id="search" name="search" class="form-control">
-					<option value="b_title">예약번호</option>
-					<option value="b_name">대여번호</option>
-					<option value="b_content">예약자명</option>
-				</select> <input type="text" name="keyword" id="keyword" placeholder="예약번호, 예약자명, 예약 상태" />
-				<button type="button" class="btn btn-primary" id="searchBtn">찾기</button>
+			<div id="carSearch" class="well">
+		<form id="f_search" name="f_search">
+			<input type="hidden" id="page" name="page" value="${data.page}">
+			<input type="hidden" id="order_by" name="order_by" value="${data.order_by}" /> <input type="hidden" id="order_sc" name="order_sc" value="${data.order_sc}" />
+			<div>
+				<div class="form-group">
+					<table>
+						<tr>
+							<td id="btd1"><label>검색조건</label> <select id="search"
+								name="search">
+									<option value="ren_number">대여번호</option>
+									<option value="rsv_number">예약번호</option>
+									<option value="rsv_name">예약자명</option>
+							</select> <input type="text" name="keyword" id="keyword"
+								placeholder="검색어를 입력하세요." /> <input type="button"
+								class="btn btn-primary" id="searchData" value="검색" /></td>
+						</tr>
+					</table>
+
+				</div>
 			</div>
-			</form>
-		</div>
-		<%-- <!-- 페이지 네비게이션 시작 -->
+		</form>
+	</div>
+		<!-- 페이지 네비게이션 시작 -->
 		<div id="boardPage">
 		<tag:paging page="${param.page }" total="${total }" list_size="10"/>
 		</div>
-	</div> --%>
 	</div>
+

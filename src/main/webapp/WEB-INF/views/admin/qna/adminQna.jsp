@@ -5,7 +5,7 @@
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
 
 <style type="text/css">
-td, th{
+td, th {
 	text-align: center;
 }
 </style>
@@ -25,7 +25,7 @@ td, th{
 
 			if ($("#search").val() != 'mem_id') {
 				//:contains()는 특정 텍스트를 포함한 요소반환
-				if ($("#search").val() == 'INQ_TITLE')
+				if ($("#search").val() == 'inq_title')
 					value = "#list tr td.goDetail";
 				if ($("#search").val() == 'mem_name')
 					value = "#list tr td.goDetail";
@@ -44,22 +44,7 @@ td, th{
 						});
 			}
 		}
-		/* 
-		 // 정렬 삼각형 버튼 클릭 시
-		 $(".order").click(function() {
-		 var order_by = $(this).attr("data-value");
-		 console.log("선택값 : " + order_by);
-
-		 $("#order_by").val(order_by);
-		 if ($("#order_sc").val() == 'DESC') {
-		 $("#order_sc").val('ASC')
-		 } else {
-		 $("#order_sc").val('DESC')
-		 }
-		 goPage(1);
-		 });
-		 */
-
+		
 		/* 한페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정 */
 		if ("<c:out value='${data.pageSize}' />" != "") {
 			$("#pageSize").val("<c:out value='${data.pageSize}' />");
@@ -83,6 +68,21 @@ td, th{
 			}
 			goPage(1);
 		});
+		/* 
+		 // 정렬 삼각형 버튼 클릭 시
+		 $(".order").click(function() {
+		 var order_by = $(this).attr("data-value");
+		 console.log("선택값 : " + order_by);
+
+		 $("#order_by").val(order_by);
+		 if ($("#order_sc").val() == 'DESC') {
+		 $("#order_sc").val('ASC')
+		 } else {
+		 $("#order_sc").val('DESC')
+		 }
+		 goPage(1);
+		 });
+		 */
 
 		/* 한 페이지에 보여줄 레코드 수 변결될 때마다 처리 이벤트 */
 		$("#pageSize").change(function() {
@@ -164,9 +164,9 @@ td, th{
 								</select></td>
 							</tr>
 						</table>
-						<input type="text" name="keyword" id="keyword"
+						<td><input type="text" name="keyword" id="keyword"
 							placeholder="검색어를 입력하세요." /> <input type="button"
-							class="btn btn-primary" id="searchData" value="검색" />
+							class="btn btn-primary" id="searchData" value="검색" /></td>
 					</div>
 				</div>
 			</form>

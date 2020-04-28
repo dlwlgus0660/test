@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <style type="text/css">
-td, th{
+td, th {
 	text-align: center;
 }
 </style>
@@ -34,7 +34,7 @@ td, th{
 				//:contains()는 특정 텍스트를 포함한 요소반환
 				if ($("#search").val() == 'nt_heading')
 					value = "#list tr td.goDetail";
-				alert(value);
+				
 
 				$(value + ":contains('" + word + "')").each(
 						function() {
@@ -110,7 +110,7 @@ td, th{
 <div class="table-responsive">
 	<h2 class="sub-header">공지사항 관리</h2>
 	<div>
-		<label> 등록된 공지:</label><label>${total}</label>
+		<label> 등록된 공지:</label><label style="color: red">${total}</label>
 	</div>
 	<%--====================리스트 시작 =============== --%>
 	<table class="table table-bordered">
@@ -159,32 +159,30 @@ td, th{
 			</c:choose>
 		</tbody>
 	</table>
-	<%-- ======================리스트 종료 ================== --%>
-	<%--====================검색기능 시작 =============== --%>
+	
+	<!-- 검색기능 -->
 	<div id="carSearch" class="well">
 		<form id="f_search" name="f_search">
 			<input type="hidden" id="page" name="page" value="${data.page}">
-			<input type="hidden" id="order_by" name="order_by"
-				value="${data.order_by}" /> <input type="hidden" id="order_sc"
-				name="order_sc" value="${data.order_sc}" />
+			<input type="hidden" id="order_by" name="order_by" value="${data.order_by}" />
+			<input type="hidden" id="order_sc" name="order_sc" value="${data.order_sc}" />
 			<div>
 				<div class="form-group">
 					<table>
 						<tr>
 							<td id="btd1"><label>검색조건</label> <select id="search"
 								name="search">
-									<option value="car_name">공지종류</option>
-									<option value="car_option">제목</option>
+									<option value="nt_heading">공지종류</option>
+									<option value="nt_title">제목</option>
 									<option value="all">전체</option>
-							</select></td>
+							</select> <input type="text" name="keyword" id="keyword"
+								placeholder="검색어를 입력하세요." /> <input type="button"
+								class="btn btn-primary" id="searchData" value="검색" /></td>
 						</tr>
 					</table>
-					<input type="text" name="keyword" id="keyword"
-						placeholder="검색어를 입력하세요." /> <input type="button"
-						class="btn btn-primary" id="searchData" value="검색" />
+
 				</div>
 			</div>
-			<!-- 옵션박스 / 검색 -->
 		</form>
 	</div>
 	<!-- 페이지 네비게이션 시작 -->

@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.jeju.admin.car.list.vo.AdminCarListVO;
 import com.jeju.admin.common.page.Paging;
 import com.jeju.admin.review.dao.AdminReviewDao;
 import com.jeju.admin.review.vo.AdminReviewVO;
@@ -31,11 +30,6 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 		 * if (vo.getOrder_sc() == null) vo.setOrder_sc("DESC");
 		 */
 
-		// 페이징 설정
-		if (!vo.getKeyword().equals("")) {
-			vo.setStart_row("");
-			vo.setEnd_row("");
-		}
 		aList = adminReviewDao.list(vo);
 		return aList;
 	}
