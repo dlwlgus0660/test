@@ -47,6 +47,8 @@ public class AdminCarListController {
 		List<AdminCarListVO> list = adminCarListService.list(vo);
 		ModelAndView mav = new ModelAndView();
 		ModelAndView login = new ModelAndView();
+		
+
 
 		if (session.getAttribute("AdminLogin") == null) {
 			login.setViewName("/admin/login/adminLogin");

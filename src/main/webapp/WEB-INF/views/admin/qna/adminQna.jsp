@@ -15,6 +15,7 @@ td, th {
 <script type="text/javascript">
 	$(function() {
 
+
 		/* 검색 후 검색 대상과 검색 단어 출력*/
 		var word = "<c:out value='${data.keyword}'/>";
 		var value = "";
@@ -44,7 +45,7 @@ td, th {
 						});
 			}
 		}
-		
+
 		/* 한페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정 */
 		if ("<c:out value='${data.pageSize}' />" != "") {
 			$("#pageSize").val("<c:out value='${data.pageSize}' />");
@@ -154,7 +155,7 @@ td, th {
 					<div class="form-group">
 						<table>
 							<tr>
-								<td id="btd1"><label>검색조건</label> <select id="search"
+								<td id="btd1"> <select id="search"
 									name="search" class="form-control">
 										<option value="mem_id">ID</option>
 										<option value="inq_title">제목</option>
@@ -164,9 +165,14 @@ td, th {
 								</select></td>
 							</tr>
 						</table>
-						<td><input type="text" name="keyword" id="keyword"
-							placeholder="검색어를 입력하세요." /> <input type="button"
-							class="btn btn-primary" id="searchData" value="검색" /></td>
+						<table>
+							<tr>
+								<td><input type="text" name="keyword" id="keyword"
+									placeholder="검색어를 입력하세요." /> <input type="button"
+									class="btn btn-primary" id="searchData" value="검색" /></td>
+							</tr>
+						</table>
+
 					</div>
 				</div>
 			</form>

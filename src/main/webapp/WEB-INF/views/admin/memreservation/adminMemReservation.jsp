@@ -172,7 +172,7 @@ td {
 					<div class="form-group">
 						<table>
 							<tr>
-								<td id="btd1"><label>검색조건</label> <select id="search"
+								<td id="btd1"> <select id="search"
 									name="search" class="form-control">
 										<option value="rsv_number">예약번호</option>
 										<option value="rsv_name">예약자명</option>

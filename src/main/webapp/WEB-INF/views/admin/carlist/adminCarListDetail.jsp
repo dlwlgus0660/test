@@ -61,48 +61,46 @@
 			<tr>
 				<td>모델 고유번호</td>
 				<td>${vo.car_model_number}</td>
-			</tr>
-			<tr>
 				<td>등록일</td>
 				<td>${vo.car_registe_date}</td>
 
 			</tr>
 			<tr>
 				<td>차량명</td>
-				<td>${vo.car_name}</td>
+				<td colspan="3">${vo.car_name}</td>
 			</tr>
 			<tr>
 				<td>가격</td>
-				<td>${vo.car_price}</td>
+				<td colspan="3">${vo.car_price}</td>
 			</tr>
 			<tr>
 				<td>스틱옵션</td>
-				<td>${vo.car_stick}</td>
+				<td colspan="3">${vo.car_stick}</td>
 			</tr>
 			<tr>
 				<td>연료옵션</td>
-				<td>${vo.car_fuel}</td>
+				<td colspan="3">${vo.car_fuel}</td>
 			</tr>
 			<tr>
 				<td>최대 승차 인원</td>
-				<td>${vo.car_number_passengers}</td>
+				<td colspan="3">${vo.car_number_passengers}</td>
 			</tr>
 			<tr>
 				<td>일반 보험</td>
-				<td>${vo.car_insurance}</td>
+				<td colspan="3">${vo.car_insurance}&nbsp;(원)</td>
 			</tr>
 			<tr>
 				<td>고급 보험</td>
-				<td>${vo.car_adv_insurance}</td>
+				<td colspan="3">${vo.car_adv_insurance}&nbsp;(원)</td>
 			</tr>
 			<tr>
 				<td>차량 옵션</td>
-				<td>${vo.car_option}</td>
+				<td colspan="3">${vo.car_option}</td>
 			</tr>
 			<c:if test="${vo.car_image != ''}">
 				<tr>
 					<td>이미지</td>
-					<td><img id="fileImage">${vo.car_image}</td>
+					<td colspan="3"><img id="fileImage">${vo.car_image}</td>
 				</tr>
 			</c:if>
 		</table>

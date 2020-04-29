@@ -30,7 +30,7 @@
 	</sql>
 
 
-	<!-- 게시물 전체 조회 (정렬 제외)-->
+	<!-- 게시물 전체 조회 (정렬 제외) -->
 	<select id="list" parameterType="adminQnaList"
 		resultType="adminQnaList">
 		<!-- Board - boardList -->
@@ -44,9 +44,9 @@
 		) list
 		)
 		<where>
-			
-					RNUM BETWEEN #{start_row} AND #{end_row}
-			
+
+			RNUM BETWEEN #{start_row} AND #{end_row}
+
 		</where>
 	</select>
 

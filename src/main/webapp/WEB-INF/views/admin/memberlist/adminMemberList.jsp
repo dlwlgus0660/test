@@ -110,7 +110,7 @@
 		<table class="table table-bordered">
 			<tr>
 				<th>ID</th>
-				<th>이름</th>
+				<th>회원명</th>
 				<th>성별</th>
 				<th>생년월일</th>
 				<th>휴대폰 번호</th>
@@ -149,7 +149,7 @@
 					<div class="form-group">
 						<table>
 							<tr>
-								<td id="btd1"><label>검색조건</label> <select id="search"
+								<td id="btd1"> <select id="search"
 									name="search" class="form-control">
 										<option value="mem_id">ID</option>
 										<option value="mem_name">회원명</option>

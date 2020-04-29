@@ -58,62 +58,191 @@
 				name="car_image" id="car_image" value="${vo.car_image}" />
 			<table class="table table-bordered">
 				<tr>
+					<td>모델고유번호</td>
+					<td>${vo.car_model_number}</td>
+					<td>등록일자</td>
+					<td>${vo.car_registe_date}</td>
+				</tr>
+				<tr>
 					<td>차량명</td>
-					<td><input type="text" name="car_name" id="car_name"
-						value="${vo.car_name}"></td>
+					<td colspan="3"><input type="text" name="car_name"
+						id="car_name" value="${vo.car_name}"></td>
 				</tr>
 				<tr>
 					<td>가격</td>
-					<td><input type="text" name="car_price" id="car_price"
-						value="${vo.car_price}"></td>
+					<td colspan="3"><input type="text" name="car_price"
+						id="car_price" value="${vo.car_price}">&nbsp;(원)</td>
 				</tr>
 				<tr>
 					<td>연료옵션</td>
-					<td>${vo.car_fuel}<br>[수정]&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;
-						<label><input type="radio" name="car_fuel" id="car_fuel"
-							value="휘발유" checked>휘발유</label>&nbsp;&nbsp;&nbsp; <label><input
-							type="radio" name="car_fuel" id="car_fuel" value="전기">전기</label>
-					</td>
+					<td colspan="3"><c:if test="${vo.car_fuel == '휘발유' }">
+							<input type="radio" name="car_fuel" id="car_fuel" value="휘발유"
+								checked>휘발유<input type="radio" name="car_fuel"
+								id="car_fuel" value="전기">전기 </c:if> <c:if
+							test="${vo.car_fuel == '전기' }">
+							<input type="radio" name="car_fuel" id="car_fuel" value="전기"
+								checked>전기<input type="radio" name="car_fuel"
+								id="car_fuel" value="휘발유">휘발유
+							</c:if>
 				</tr>
 				<tr>
 					<td>최대 승차 인원</td>
-					<td>${vo.car_number_passengers}<br>[수정]&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;
-						<select name="car_number_passengers" id="car_number_passengers">
-							<option value="5인">5인</option>
-							<option value="6인">6인</option>
-							<option value="7인">7인</option>
-							<option value="8인">8인</option>
-							<option value="9인">9인</option>
-							<option value="10인">10인</option>
-							<option value="11인">11인</option>
-							<option value="12인">12인</option>
+					<td colspan="3"><select name="car_number_passengers"
+						id="car_number_passengers">
+							<c:if test="${vo.car_number_passengers == '5인' }">
+								<option value="5인" selected>5인</option>
+								<option value="6인">6인</option>
+								<option value="7인">7인</option>
+								<option value="8인">8인</option>
+								<option value="9인">9인</option>
+								<option value="10인">10인</option>
+								<option value="11인">11인</option>
+								<option value="12인">12인</option>
+
+							</c:if>
+							<c:if test="${vo.car_number_passengers == '6인' }">
+								<option value="6인" selected>6인</option>
+								<option value="5인">5인</option>
+								<option value="7인">7인</option>
+								<option value="8인">8인</option>
+								<option value="9인">9인</option>
+								<option value="10인">10인</option>
+								<option value="11인">11인</option>
+								<option value="12인">12인</option>
+							</c:if>
+							<c:if test="${vo.car_number_passengers == '7인' }">
+								<option value="7인" selected>7인</option>
+								<option value="5인">5인</option>
+								<option value="6인">6인</option>
+								<option value="8인">8인</option>
+								<option value="9인">9인</option>
+								<option value="10인">10인</option>
+								<option value="11인">11인</option>
+								<option value="12인">12인</option>
+							</c:if>
+							<c:if test="${vo.car_number_passengers == '8인' }">
+								<option value="8인" selected>8인</option>
+								<option value="5인">5인</option>
+								<option value="6인">6인</option>
+								<option value="7인">7인</option>
+								<option value="9인">9인</option>
+								<option value="10인">10인</option>
+								<option value="11인">11인</option>
+								<option value="12인">12인</option>
+							</c:if>
+							<c:if test="${vo.car_number_passengers == '9인' }">
+								<option value="9인" selected>9인</option>
+								<option value="5인">5인</option>
+								<option value="6인">6인</option>
+								<option value="7인">7인</option>
+								<option value="8인">8인</option>
+								<option value="10인">10인</option>
+								<option value="11인">11인</option>
+								<option value="12인">12인</option>
+							</c:if>
+							<c:if test="${vo.car_number_passengers == '10인' }">
+								<option value="10인" selected>10인</option>
+								<option value="5인">5인</option>
+								<option value="6인">6인</option>
+								<option value="7인">7인</option>
+								<option value="8인">8인</option>
+								<option value="9인">9인</option>
+								<option value="11인">11인</option>
+								<option value="12인">12인</option>
+							</c:if>
+							<c:if test="${vo.car_number_passengers == '11인' }">
+								<option value="11인" selected>11인</option>
+								<option value="5인">5인</option>
+								<option value="6인">6인</option>
+								<option value="7인">7인</option>
+								<option value="8인">8인</option>
+								<option value="9인">9인</option>
+								<option value="10인">10인</option>
+								<option value="12인">12인</option>
+							</c:if>
+							<c:if test="${vo.car_number_passengers == '12인' }">
+								<option value="12인" selected>12인</option>
+								<option value="5인">5인</option>
+								<option value="6인">6인</option>
+								<option value="7인">7인</option>
+								<option value="8인">8인</option>
+								<option value="9인">9인</option>
+								<option value="10인">10인</option>
+								<option value="11인">11인</option>
+							</c:if>
 					</select></td>
 				</tr>
 				<tr>
 					<td>일반 보험</td>
-					<td><input type="text" name="car_insurance" id="car_insurance"
-						value="${vo.car_insurance}"></td>
+					<td colspan="3"><input type="text" name="car_insurance"
+						id="car_insurance" value="${vo.car_insurance}">&nbsp;(원)</td>
 				</tr>
 				<tr>
 					<td>고급 보험</td>
-					<td><input type="text" name="car_adv_insurance"
-						id="car_adv_insurance" value="${vo.car_adv_insurance}"></td>
+					<td colspan="3"><input type="text" name="car_adv_insurance"
+						id="car_adv_insurance" value="${vo.car_adv_insurance}">&nbsp;(원)</td>
 				</tr>
 				<tr>
 					<td>차량 옵션</td>
-					<td>${vo.car_option}<br>[수정]&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;
-						<label><input type="checkbox" name="car_option"
-							id="car_option" value="네비게이션">네비게이션</label><label><input
-							type="checkbox" name="car_option" id="car_option" value="운전석 에어백">운전석
-							에어백</label> <label><input type="checkbox" name="car_option"
-							id="car_option" value="블랙박스">블랙 박스</label>
-					</td>
+					<td colspan="3">
+					
+					<!-- 옵션이 아무것도 선택되지 않았을 때 -->
+					<c:if test="${vo.car_option == '' }">
+							<input type="checkbox" name="car_option" id="car_option"
+								value="네비게이션">네비게이션&nbsp;&nbsp; <input type="checkbox"
+								name="car_option" id="car_option" value="운전석 에어백">운전석
+							에어백&nbsp;&nbsp; <input type="checkbox" name="car_option"
+								id="car_option" value="블랙박스">블랙박스
+					</c:if>
+					
+					
+					 <!-- 옵션이 1개 선택되어 있었을 때 --> 
+					 <c:if test="${vo.car_option == '네비게이션' }">
+							<input type="checkbox" name="car_option" id="car_option"
+								value="네비게이션" checked>네비게이션&nbsp;&nbsp; <input
+								type="checkbox" name="car_option" id="car_option"
+								value="운전석 에어백">운전석 에어백&nbsp;&nbsp;<input
+								type="checkbox" name="car_option" id="car_option" value="블랙박스">블랙박스
+								</c:if> <c:if test="${vo.car_option == '운전석 에어백' }">
+							<input type="checkbox" name="car_option" id="car_option"
+								value="네비게이션">네비게이션&nbsp;&nbsp; <input type="checkbox"
+								name="car_option" id="car_option" value="운전석 에어백" checked>운전석 에어백&nbsp;&nbsp;<input
+								type="checkbox" name="car_option" id="car_option" value="블랙박스">블랙박스
+								</c:if> <c:if test="${vo.car_option == '블랙박스' }">
+							<input type="checkbox" name="car_option" id="car_option"
+								value="네비게이션">네비게이션&nbsp;&nbsp; <input type="checkbox"
+								name="car_option" id="car_option" value="운전석 에어백">운전석 에어백&nbsp;&nbsp;<input
+								type="checkbox" name="car_option" id="car_option" value="블랙박스"
+								checked>블랙박스
+								</c:if> 
+								
+								
+					<!-- 옵션이 2개 이상 선택되어 있었을 때 --> 
+					<c:if test="${vo.car_option == '네비게이션,운전석 에어백'}">
+							<input type="checkbox" name="car_option" id="car_option"
+								value="네비게이션" checked>네비게이션&nbsp;&nbsp; <input
+								type="checkbox" name="car_option" id="car_option"
+								value="운전석 에어백" checked>운전석 에어백&nbsp;&nbsp;<input
+								type="checkbox" name="car_option" id="car_option" value="블랙박스">블랙박스
+							</c:if> <c:if test="${vo.car_option == '네비게이션,블랙박스'}">
+							<input type="checkbox" name="car_option" id="car_option"
+								value="네비게이션" checked>네비게이션&nbsp;&nbsp; <input
+								type="checkbox" name="car_option" id="car_option"
+								value="운전석 에어백" checked>운전석 에어백&nbsp;&nbsp;<input
+								type="checkbox" name="car_option" id="car_option" value="블랙박스">블랙박스
+							</c:if> <c:if test="${vo.car_option == '운전석 에어백,블랙박스'}">
+							<input type="checkbox" name="car_option" id="car_option"
+								value="네비게이션" checked>네비게이션&nbsp;&nbsp; <input
+								type="checkbox" name="car_option" id="car_option"
+								value="운전석 에어백" checked>운전석 에어백&nbsp;&nbsp;<input
+								type="checkbox" name="car_option" id="car_option" value="블랙박스">블랙박스
+							</c:if></td>
 				</tr>
 				<tr>
 					<td>이미지</td>
-					<td><input type="file" name="file" id="file"> <span
-						id="imgView">기존 이미지파일명 : ${vo.car_image}<span id="imgArea">
-						</span></span></td>
+					<td colspan="3"><input type="file" name="file" id="file">
+						<span id="imgView">기존 이미지파일명 : ${vo.car_image}<span
+							id="imgArea"> </span></span></td>
 				</tr>
 			</table>
 		</form>

@@ -170,7 +170,7 @@ td, th{
 					<div class="form-group">
 						<table>
 							<tr>
-								<td id="btd1"><label>검색조건</label> <select id="search"
+								<td id="btd1"><select id="search"
 									name="search" class="form-control">
 										<option value="car_name">차량명</option>
 										<option value="car_option">차량옵션</option>

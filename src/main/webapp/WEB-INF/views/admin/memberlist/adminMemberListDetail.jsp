@@ -45,10 +45,6 @@
 					<td>${vo.mem_gender}</td>
 				</tr>
 				<tr>
-					<td>가입일</td>
-					<td>${vo.mem_joindate}</td>
-				</tr>
-				<tr>
 					<td>핸드폰 번호</td>
 					<td>${vo.mem_cellphone}</td>
 				</tr>
@@ -57,8 +53,10 @@
 					<td><select name="mem_state" id="mem_state">
 							<c:if test="${vo.mem_state == '활성화' }">
 								<option value="활성화" selected>활성화</option>
+								<option value="비활성화">비활성화</option>
 							</c:if>
 							<c:if test="${vo.mem_state == '비활성화' }">
+								<option value="활성화">활성화</option>
 								<option value="비활성화" selected>비활성화</option>
 							</c:if>
 					</select></td>

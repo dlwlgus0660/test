@@ -147,7 +147,7 @@ td, th{
 					<div class="form-group">
 						<table>
 							<tr>
-								<td id="btd1"><label>검색조건</label> <select id="search"
+								<td id="btd1"> <select id="search"
 									name="search" class="form-control">
 										<option value="mem_id">ID</option>
 										<option value="re_title">제목</option>
