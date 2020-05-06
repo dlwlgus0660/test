@@ -41,4 +41,5 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/{1}.jsp" />
 	</definition>
+
 </tiles-definitions>

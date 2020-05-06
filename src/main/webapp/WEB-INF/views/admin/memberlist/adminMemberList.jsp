@@ -154,7 +154,7 @@
 										<option value="mem_id">ID</option>
 										<option value="mem_name">회원명</option>
 										<option value="mem_state">회원상태</option>
-										<option value="all">전체</option>
+										<option value="all">전체리스트</option>
 								</select></td>
 							</tr>
 						</table>

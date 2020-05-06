@@ -29,7 +29,7 @@ public class AdminMemberReservationServiceImpl implements AdminMemberReservation
 		if (vo.getOrder_by() == null)
 			vo.setOrder_by("rsv_number");
 		if (vo.getOrder_sc() == null)
-			vo.setOrder_sc("ASC");
+			vo.setOrder_sc("DESC");
 
 		aList = adminMemberReservationDao.memResList(vo);
 		return aList;
@@ -61,5 +61,19 @@ public class AdminMemberReservationServiceImpl implements AdminMemberReservation
 		int countNum = 0;
 		countNum = adminMemberReservationDao.memResListCnt(vo);
 		return countNum;
+	}
+
+	//차량 예약 관리로 인설트
+	@Override
+	public int insert(AdminMemberReservationVO vo) {
+		
+		int result = 0;
+		try {
+			result = adminMemberReservationDao.insert(vo);
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
 	}
 }

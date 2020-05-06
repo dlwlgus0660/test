@@ -15,9 +15,9 @@ public class AdminRefundVO {
 	private String rsv_state = ""; //환불 상태
 	private int rsv_price = 0; //이용금액
 	private Timestamp rsv_expected_date; //대여 예상 일시
-	
-	//환불 상세 내역
-	
+	private String bk_name = ""; //은행명
+	private String bk_account = "";//계좌번호
+	private String bk_user = ""; //예금주
 	
 	public int getRsv_number() {
 		return rsv_number;
@@ -67,7 +67,24 @@ public class AdminRefundVO {
 	public void setRsv_expected_date(Timestamp rsv_expected_date) {
 		this.rsv_expected_date = rsv_expected_date;
 	}
-	
+	public String getBk_name() {
+		return bk_name;
+	}
+	public void setBk_name(String bk_name) {
+		this.bk_name = bk_name;
+	}
+	public String getBk_account() {
+		return bk_account;
+	}
+	public void setBk_account(String bk_account) {
+		this.bk_account = bk_account;
+	}
+	public String getBk_user() {
+		return bk_user;
+	}
+	public void setBk_user(String bk_user) {
+		this.bk_user = bk_user;
+	}
 	
 	
 }

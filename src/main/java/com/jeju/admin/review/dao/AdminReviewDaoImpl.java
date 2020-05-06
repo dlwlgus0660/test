@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.jeju.admin.car.list.vo.AdminCarListVO;
 import com.jeju.admin.review.vo.AdminReviewVO;
 
 @Repository

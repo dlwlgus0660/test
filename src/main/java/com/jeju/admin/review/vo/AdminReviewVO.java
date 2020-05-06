@@ -6,15 +6,15 @@ import com.jeju.admin.common.vo.CommonVO;
 
 public class AdminReviewVO extends CommonVO {
 
-	private int re_number = 0;
-	private String mem_id = "";
-	private String re_title = "";
-	private String re_content = "";
-	private String re_image1 = "";
-	private String re_image2 = "";
-	private String re_image3 = "";
-	private Date re_regdate;
-	private String re_reply = "";
+	private int re_number = 0; // 글번호
+	private String mem_id = ""; // 회원 아이디
+	private String re_title = ""; // 제목
+	private String re_content = ""; // 내용
+	private String re_image1 = ""; // 이미지 1
+	private String re_image2 = ""; // 이미지 2
+	private String re_image3 = ""; // 이미지 3
+	private Date re_regdate; // 등록일
+	private String re_reply = ""; // 댓글(답변)
 
 	public int getRe_number() {
 		return re_number;

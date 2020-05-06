@@ -35,6 +35,7 @@ public class AdminCarListController {
 	@RequestMapping("/admin/carlist/carList")
 	public ModelAndView list(@ModelAttribute AdminCarListVO vo, HttpSession session) throws Exception {
 		log.info("admin carlist 호출 성공");
+		
 
 		// 전체 레코드수 구현
 		int total = adminCarListService.carListCnt(vo);

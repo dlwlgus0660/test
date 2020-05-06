@@ -45,6 +45,9 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/review/{1}.jsp" />
 	</definition>
-	
+	<definition name="admin/stat/*" extends="basic">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/stat/{1}.jsp" />
+	</definition>
 </tiles-definitions>
 

@@ -12,6 +12,7 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 	@Autowired
 	private AdminLoginDao adminLoginDao;
 	
+	// 관리자 로그인 체크
 	@Override
 	public AdminLoginVO loginCheck(AdminLoginVO lvo) {
 		AdminLoginVO vo = null;

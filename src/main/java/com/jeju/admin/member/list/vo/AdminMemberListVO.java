@@ -6,13 +6,12 @@ import java.sql.Date;
 import com.jeju.admin.common.vo.CommonVO;
 
 public class AdminMemberListVO extends CommonVO {
-	private String mem_id = "";
-	private String mem_name = "";
-	private String mem_gender = "";
-	private Date mem_birthday;
-	private String mem_cellphone = "";
-	private String mem_state = "";
-	private Date mem_joindate;
+	private String mem_id = ""; // 회원 아이디
+	private String mem_name = ""; // 회원명
+	private String mem_gender = ""; // 성별
+	private Date mem_birthday; // 생년월일
+	private String mem_cellphone = ""; // 핸드폰번호
+	private String mem_state = ""; // 회원상태
 
 	public String getMem_id() {
 		return mem_id;
@@ -60,14 +59,6 @@ public class AdminMemberListVO extends CommonVO {
 
 	public void setMem_state(String mem_state) {
 		this.mem_state = mem_state;
-	}
-
-	public Date getMem_joindate() {
-		return mem_joindate;
-	}
-
-	public void setMem_joindate(Date mem_joindate) {
-		this.mem_joindate = mem_joindate;
 	}
 
 }

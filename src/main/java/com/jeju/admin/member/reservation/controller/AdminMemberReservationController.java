@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jeju.admin.car.reservation.vo.AdminCarReservationVO;
 import com.jeju.admin.common.util.Util;
 import com.jeju.admin.member.reservation.service.AdminMemberReservationService;
 import com.jeju.admin.member.reservation.vo.AdminMemberReservationVO;
@@ -28,12 +29,12 @@ public class AdminMemberReservationController {
 
 	// 1.회원 예약 리스트
 	@RequestMapping(value = "/memreservation/memRes", method = RequestMethod.GET)
-	public ModelAndView memResList(@ModelAttribute AdminMemberReservationVO vo, HttpSession session)throws Exception {
+	public ModelAndView memResList(@ModelAttribute AdminMemberReservationVO vo, HttpSession session) throws Exception {
 
-		//정렬 사용 시 강제 주입 필요...
-		vo.setOrder_by("rsv_number"); 
-		//vo.setOrder_sc("rsv_number");
-		
+		// 정렬 사용 시 강제 주입 필요...
+		vo.setOrder_by("rsv_number");
+		// vo.setOrder_sc("rsv_number");
+
 		log.info("admin memRes 호출 성공");
 
 		// 전체 레코드수 구현
@@ -87,6 +88,7 @@ public class AdminMemberReservationController {
 		result = adminMemberReservationService.update(vo);
 
 		if (result == 1) {
+			adminMemberReservationService.insert(vo);
 			url = "/admin/memreservation/memRes";
 
 		} else {
@@ -94,6 +96,18 @@ public class AdminMemberReservationController {
 		}
 
 		return "redirect:" + url;
+	}
+
+	// 매출 통계
+	@RequestMapping("/salesstat")
+	public ModelAndView stat(AdminCarReservationVO vo) {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject(vo.getRen_take_date());
+
+		mav.setViewName("admin/stat/adminStat");
+		return mav;
+
 	}
 
 }

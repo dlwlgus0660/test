@@ -11,11 +11,11 @@
 		$("#updateBtn").click(function() {
 			if (confirm("저장하시겠습니까?")) {
 				
-				$("#detail").attr({
+				$("#update").attr({
 					"method" : "POST",
 					"action" : "/admin/carres/adminCarReservationUpdate"
 				})
-				$("#detail").submit();
+				$("#update").submit();
 			}
 		})
 	})
@@ -23,7 +23,7 @@
 <div class="contetnContainer">
 	<h2 class="sub-header">차량 인수 인계 관리 상세 내역</h2>
 	<div class="table-responsive">
-		<form id="detail" name="detail" method="post">
+		<form id="update" name="update">
 			<input type="hidden" id="ren_number" name="ren_number"
 				value="${vo.ren_number}" />
 			
@@ -38,11 +38,11 @@
 				</tr>
 				<tr>
 					<td><b>차량명</b></td>
-					<td>${vo.car_name}</td>
+					<td>${vo.car_name}<input type="hidden" id="car_name" name="car_name" value="${vo.car_name}"></td>
 				</tr>
 				<tr>
 					<td><b>예약번호</b></td>
-					<td>${vo.rsv_number}
+					<td>${vo.rsv_number}<input type="hidden" id="rsv_number" name="rsv_number" value="${vo.rsv_number}">
 				</tr>
 				<tr>
 					<td><b>운전면허증</b></td>
@@ -54,11 +54,18 @@
 				</tr>
 				<tr>
 					<td><b>이용 상태</b></td>
-					<td><select id="ren_state" name="ren_state">
-							<option value="입금완료(인수대기)" <c:if test="${vo.ren_state == '입금완료(인수대기)' }">selected</c:if>>입금완료(인수대기)</option>
-							<option value="렌트중"  <c:if test="${vo.ren_state == '렌트중' }">selected</c:if>>렌트중</option>
-							<option value="반납완료"  <c:if test="${vo.ren_state == '반납완료' }">selected</c:if>>반납완료</option>
-					</select></td>
+					<td>
+					<c:if test="${vo.rsv_state == '반납완료'}">
+						${vo.rsv_state}
+					</c:if>
+					<c:if test="${vo.rsv_state == '입금완료(인수대기)' or vo.rsv_state == '렌트중'}">
+					<select id="rsv_state" name="rsv_state">
+							<option value="입금완료(인수대기)" <c:if test="${vo.rsv_state == '입금완료(인수대기)' }">selected</c:if>>입금완료(인수대기)</option>
+							<option value="렌트중"  <c:if test="${vo.rsv_state == '렌트중' }">selected</c:if>>렌트중</option>
+							<option value="반납완료"  <c:if test="${vo.rsv_state == '반납완료' }">selected</c:if>>반납완료</option>
+					</select>
+					</c:if>
+					</td>
 				</tr>
 				<tr>
 					<td><b>실 반납 일시</b></td>

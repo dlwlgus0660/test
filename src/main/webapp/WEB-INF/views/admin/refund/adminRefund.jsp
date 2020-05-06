@@ -19,6 +19,7 @@ text-align: center;
 
 	<h2 class="sub-header">환불 관리</h2>
 	<div class="table-responsive">
+		<input type="hidden" id="rsv_number" name="rsv_number" value="${vo.rsv_number}" />
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -38,7 +39,7 @@ text-align: center;
 					<c:when test="${not empty refundList }">
 						<c:forEach var="REFUND" items="${refundList}">
 							<tr>
-								<td>${REFUND.rsv_number }</td>
+								<td><a href="${path}/admin/refund/refundDetail?rsv_number=${REFUND.rsv_number }">${REFUND.rsv_number }</a></td>
 								<td>${REFUND.mem_id }</td>
 								<td>${REFUND.car_name }</td>
 								<td>${REFUND.rsv_name }</td>
@@ -46,12 +47,12 @@ text-align: center;
 								<td>${REFUND.rsv_state }</td>
 								<td>${REFUND.rsv_price }</td>
 								<td>${REFUND.rsv_expected_date }</td>
-							</tr>
+								</tr>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="4" class="tac">환불 내역이 없습니다.</td>
+							<td colspan="8" class="tac">환불 내역이 없습니다.</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
@@ -59,19 +60,19 @@ text-align: center;
 		</table>
 		<div class="well">
 			<form class="form-inline" id="f_search">
-				<input type="hidden" name="page" id="page" /> <input type="hidden"
-					name="pageSize" id="pageSize" />
+				<input type="hidden" name="page" id="page" />
+				<input type="hidden" name="pageSize" id="pageSize" />
 
 			<!-- 검색 리스트 추가 해야됌 -->
 
 			<!-- 옵션박스 / 검색 -->
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<select id="search" name="search" class="form-control">
 					<option value="b_title">예약번호</option>
 					<option value="b_name">예약자명</option>
 				</select> <input type="text" name="keyword" id="keyword" placeholder="예약번호, 예약자명" />
 				<button type="button" class="btn btn-primary" id="searchBtn">찾기</button>
-			</div>
+			</div> -->
 			</form>
 		</div>
 		<%-- <!-- 페이지 네비게이션 시작 -->

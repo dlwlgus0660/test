@@ -1,8 +1,8 @@
 package com.jeju.admin.login.vo;
 
 public class AdminLoginVO {
-	String admin_id = "";
-	String admin_pw = "";
+	String admin_id = ""; // 관리자 아이디
+	String admin_pw = ""; // 관리자 비밀번호
 
 	public AdminLoginVO() {
 		super();

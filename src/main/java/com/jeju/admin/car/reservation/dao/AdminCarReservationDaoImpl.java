@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.jeju.admin.car.reservation.vo.AdminCarReservationVO;
 
+
 public class AdminCarReservationDaoImpl implements AdminCarReservationDao {
 
 	@Autowired
@@ -31,12 +32,18 @@ public class AdminCarReservationDaoImpl implements AdminCarReservationDao {
 		return session.selectOne("detail",ren_number);
 	}
 	
-	// 차량 수정
+	//차량 예약 수정
 	@Override
 	public int update(AdminCarReservationVO vo) {
 			
 		return session.update("update",vo);
 	}
+	
+	
+	@Override
+	public int change(AdminCarReservationVO vo) {
+	
+	return session.update("change", vo); }
 	
 	
 }

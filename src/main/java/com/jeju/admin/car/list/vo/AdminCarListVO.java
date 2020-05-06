@@ -5,17 +5,17 @@ import org.springframework.web.multipart.MultipartFile;
 import com.jeju.admin.common.vo.CommonVO;
 
 public class AdminCarListVO extends CommonVO {
-	private int car_model_number = 0;
-	private String car_name = "";
-	private int car_price = 0;
-	private String car_registe_date = "";
+	private int car_model_number = 0; // 모델 고유 번호
+	private String car_name = ""; // 차량명
+	private int car_price = 0; // 대여가격
+	private String car_registe_date = ""; // 등록일
 	private String car_image = ""; // 실제 서버에 저장한 파일명
-	private String car_insurance = "";
-	private String car_adv_insurance = "";;
-	private String car_stick = "";
-	private String car_fuel = "";
-	private String car_number_passengers = "";
-	private String car_option = "";
+	private String car_insurance = ""; // 일반보험
+	private String car_adv_insurance = "";; // 고급보험
+	private String car_stick = ""; // 스틱옵션
+	private String car_fuel = ""; // 연료옵션
+	private String car_number_passengers = ""; // 승차인원
+	private String car_option = ""; // 차량옵션
 
 	// 파일 업로드를 위한 속성
 	private MultipartFile file;// 첨부 파일

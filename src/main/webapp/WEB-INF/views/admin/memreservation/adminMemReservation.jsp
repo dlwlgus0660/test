@@ -118,9 +118,9 @@ td {
 				<tr>
 					<th data-value="rsv_number" class="order">예약번호<c:choose>
 							<c:when
-								test="${data.order_by=='rsv_number' and data.order_sc=='ASC' }">▲</c:when>
-							<c:when
 								test="${data.order_by=='rsv_number' and data.order_sc=='DESC' }">▼</c:when>
+							<c:when
+								test="${data.order_by=='rsv_number' and data.order_sc=='ASC' }">▲</c:when>
 							<c:otherwise>▲</c:otherwise>
 						</c:choose></th>
 					<th class="tac">회원 ID</th>
@@ -148,7 +148,7 @@ td {
 								<td>${RESERVATION.rsv_apply_date }</td>
 								<td>${RESERVATION.rsv_state }</td>
 								<td>${RESERVATION.rsv_price }</td>
-								<td>${RESERVATION.rsv_expected_date }</td>
+								<td>${RESERVATION.rsv_insu}~ ${RESERVATION.rsv_bannad}</td>
 							</tr>
 						</c:forEach>
 					</c:when>
@@ -165,25 +165,24 @@ td {
 		<div class="well">
 			<form id="f_search" name="f_search">
 				<input type="hidden" id="page" name="page" value="${data.page}">
-				<input type="hidden" id="order_by" name="order_by"
-					value="${data.order_by}" /> <input type="hidden" id="order_sc"
-					name="order_sc" value="${data.order_sc}" />
+				<input type="hidden" id="order_by" name="order_by" value="${data.order_by}" />
+				<input type="hidden" id="order_sc" name="order_sc" value="${data.order_sc}" />
 				<div>
 					<div class="form-group">
 						<table>
 							<tr>
-								<td id="btd1"> <select id="search"
-									name="search" class="form-control">
+								<td id="btd1"><label>검색조건</label>
+								<select id="search" name="search">
 										<option value="rsv_number">예약번호</option>
 										<option value="rsv_name">예약자명</option>
 										<option value="rsv_state">예약상태</option>
 										<option value="all">전체리스트</option>
-								</select></td>
+								</select>
+								<input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요." />
+								<input type="button" class="btn btn-primary" id="searchData" value="검색" /></td>
 							</tr>
 						</table>
-						<input type="text" name="keyword" id="keyword"
-							placeholder="검색어를 입력하세요." /> <input type="button"
-							class="btn btn-primary" id="searchData" value="검색" />
+						
 					</div>
 				</div>
 			</form>

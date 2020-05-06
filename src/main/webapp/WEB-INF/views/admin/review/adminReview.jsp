@@ -151,7 +151,7 @@ td, th{
 									name="search" class="form-control">
 										<option value="mem_id">ID</option>
 										<option value="re_title">제목</option>
-										<option value="all">전체</option>
+										<option value="all">전체리스트</option>
 								</select></td>
 							</tr>
 						</table>

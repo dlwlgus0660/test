@@ -91,27 +91,36 @@
 	</update>
 
 	<!-- 차량 예약 관리로 정보 인설트 -->
-<!-- 	<insert id="">
-		<selectKey keyProperty="ren_number" resultType="int"
-			order="BEFORE">
-			select ren_number_seq.nextval from dual
-		</selectKey>
-		INSERT INTO RENTAL VALUES(
+	<insert id="insert" parameterType="AdminMemberReservation">
+		INSERT INTO RENTAL(
 		ren_number,
-		#{car_model_number},
-		#{rsv_number},
-		#{mem_id},
-		#{ren_take_date},
-		#{ren_state},
-		#{ren_return_date},
-		#{ren_expected_date},
-		#{ren_add_price},
-		#{ren_overtime},
-		#{ren_license_number},
-		#{ren_car_number},
+		car_name,
+		rsv_number,
+		rsv_name,
+		rsv_insu,
+		rsv_bannad,
+		rsv_state
+		)SELECT
+		ren_number_seq.nextval,
+		car_name,
+		rsv_number,
+		rsv_name,
+		rsv_insu,
+		rsv_bannad,
+		rsv_state
+		from reservation
+		where rsv_state = '입금완료(인수대기)' and rsv_number = #{rsv_number}
+		
+		<!-- VALUES(
+		ren_number_seq.nextval,
 		#{car_name},
-		#{rsv_name}
-		)
-	</insert> -->
+		#{rsv_number},
+		#{rsv_name},
+		#{rsv_insu},
+		#{rsv_bannad},
+		#{rsv_state}
+		) -->
+		
+	</insert>
 
 </mapper>

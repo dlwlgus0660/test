@@ -170,11 +170,11 @@ td, th {
 				<div class="form-group">
 					<table>
 						<tr>
-							<td id="btd1"><label>검색조건</label> <select id="search"
+							<td id="btd1"><select id="search"
 								name="search">
 									<option value="nt_heading">공지종류</option>
 									<option value="nt_title">제목</option>
-									<option value="all">전체</option>
+									<option value="all">전체리스트</option>
 							</select> <input type="text" name="keyword" id="keyword"
 								placeholder="검색어를 입력하세요." /> <input type="button"
 								class="btn btn-primary" id="searchData" value="검색" /></td>
@@ -187,7 +187,6 @@ td, th {
 	</div>
 	<!-- 페이지 네비게이션 시작 -->
 	<div id="boardPage">
-		<tag:paging page="${param.page}" total="${total}"
-			list_size="${data.pageSize}" />
+		<tag:paging page="${param.page}" total="${total}" list_size="${data.pageSize}" />
 	</div>
 </div>

@@ -10,13 +10,16 @@ public class AdminMemberReservationVO extends CommonVO {
 	private String ren_car_number = ""; //차량 번호
 	private String car_name = "";//차량명
 	private String rsv_name = ""; //예약자명
-	private String rsv_phone = ""; //예약자 핸드폰번호
 	private Timestamp rsv_apply_date; //예약 신청일
 	private String rsv_state = ""; //예약 상태
 	private int rsv_price = 0; //이용금액
-	private Timestamp rsv_expected_date; //대여 예상 일시
-	
-	// getter and setters
+	private String rsv_insu = ""; //인수예정일
+	private String rsv_bannad = ""; //반납예정일
+	private String rsv_cellphone = ""; //예약자 핸드폰 번호 
+	private int car_model_number = 0; //차량 모델 고유번호
+	private String bk_name = "";
+	private String bk_account = "";
+	private String bk_user = "";
 	
 	public int getRsv_number() {
 		return rsv_number;
@@ -48,12 +51,6 @@ public class AdminMemberReservationVO extends CommonVO {
 	public void setRsv_name(String rsv_name) {
 		this.rsv_name = rsv_name;
 	}
-	public String getRsv_phone() {
-		return rsv_phone;
-	}
-	public void setRsv_phone(String rsv_phone) {
-		this.rsv_phone = rsv_phone;
-	}
 	public Timestamp getRsv_apply_date() {
 		return rsv_apply_date;
 	}
@@ -72,14 +69,53 @@ public class AdminMemberReservationVO extends CommonVO {
 	public void setRsv_price(int rsv_price) {
 		this.rsv_price = rsv_price;
 	}
-	public Timestamp getRsv_expected_date() {
-		return rsv_expected_date;
+	public String getRsv_insu() {
+		return rsv_insu;
 	}
-	public void setRsv_expected_date(Timestamp rsv_expected_date) {
-		this.rsv_expected_date = rsv_expected_date;
+	public void setRsv_insu(String rsv_insu) {
+		this.rsv_insu = rsv_insu;
 	}
-
+	public String getRsv_bannad() {
+		return rsv_bannad;
+	}
+	public void setRsv_bannad(String rsv_bannad) {
+		this.rsv_bannad = rsv_bannad;
+	}
+	public String getRsv_cellphone() {
+		return rsv_cellphone;
+	}
+	public void setRsv_cellphone(String rsv_cellphone) {
+		this.rsv_cellphone = rsv_cellphone;
+	}
+	public int getCar_model_number() {
+		return car_model_number;
+	}
+	public void setCar_model_number(int car_model_number) {
+		this.car_model_number = car_model_number;
+	}
+	public String getBk_name() {
+		return bk_name;
+	}
+	public void setBk_name(String bk_name) {
+		this.bk_name = bk_name;
+	}
+	public String getBk_account() {
+		return bk_account;
+	}
+	public void setBk_account(String bk_account) {
+		this.bk_account = bk_account;
+	}
+	public String getBk_user() {
+		return bk_user;
+	}
+	public void setBk_user(String bk_user) {
+		this.bk_user = bk_user;
+	}
 	
+	// getter and setters
+	
+	
+
 	
 	
 }

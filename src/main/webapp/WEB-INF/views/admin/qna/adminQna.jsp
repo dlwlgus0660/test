@@ -161,7 +161,7 @@ td, th {
 										<option value="inq_title">제목</option>
 										<option value="mem_name">작성자</option>
 										<option value="inq_state">답변여부</option>
-										<option value="all">전체</option>
+										<option value="all">전체리스트</option>
 								</select></td>
 							</tr>
 						</table>

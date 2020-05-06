@@ -3,12 +3,102 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
 
+
 <style type="text/css">
 td {
 	text-align: center;
 }
 </style>
-<script type="text/javascript" src="/resources/include/js/board.js"></script>
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
+<script type="text/javascript">
+	$(function() {
+		/* 검색 후 검색 대상과 검색 단어 출력*/
+		var word = "<c:out value='${data.keyword}'/>";
+		var value = "";
+
+		if (word != "") {
+			$("#keyword").val("<c:out value='${data.keyword}'/>");
+			$("#search").val("<c:out value='${data.search}'/>");
+
+			if ($("#search").val() != 'ren_number') {
+				//:contains()는 특정 텍스트를 포함한 요소반환
+				if ($("#search").val() == 'rsv_number')
+					value = "#list tr td.goDetail";
+				else if ($("#search").val() == 'rsv_name') {
+					value = "#list tr td.name";
+				}
+
+				$(value + ":contains('" + word + "')").each(
+						function() {
+							var regex = new RegExp(word, 'gi');
+							$(this).html(
+									$(this).text().replace(
+											regex,
+											"<span class='required'>" + word
+													+ "</span>"));
+						});
+			}
+		}
+		/* 한페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정 */
+		if ("<c:out value='${data.pageSize}' />" != "") {
+			$("#pageSize").val("<c:out value='${data.pageSize}' />");
+		}
+
+		/* 검색 대상이 변경될 때마다 처리 이벤트 */
+		$("#search").change(function() {
+			if ($("#search").val() == "all") {
+				$("#keyword").val("전체 데이터 조회합니다.");
+			} else if ($("#search").val() != "all") {
+				$("#keyword").val("");
+				$("#keyword").focus();
+			}
+		})
+
+		/* 검색 버튼 클릭 시 처리 이벤트 */
+		$("#searchData").click(function() {
+			if ($("#search").val() != "all") {
+				if (!chkSubmit($("#keyword"), "검색어를"))
+					return;
+			}
+			goPage(1);
+		});
+
+		// 정렬 삼각형 클릭 시
+		$(".order").click(function() {
+			var order_by = $(this).attr("data-value");
+			console.log("선택값 : " + order_by);
+
+			$("#order_by").val(order_by);
+			if ($("#order_sc").val() == 'DESC') {
+				$("#order_sc").val('ASC')
+			} else {
+				$("#order_sc").val('DESC')
+			}
+			goPage(1);
+		});
+
+		/* 한 페이지에 보여줄 레코드 수 변결될 때마다 처리 이벤트 */
+		$("#pageSize").change(function() {
+			goPage(1);
+		});
+
+	});
+
+	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수 */
+	function goPage(page) {
+		if ($("#search").val() == "all") {
+			$("#keyword").val("");
+		}
+		$("#page").val(page);
+		$("#f_search").attr({
+			"method" : "GET",
+			"action" : "/admin/carres/carRes"
+		});
+		$("#f_search").submit();
+	}
+</script>
 
 <h2 class="sub-header">차량 예약 관리</h2>
 <div>
@@ -18,13 +108,19 @@ td {
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th class="tac">대여번호</th>
+				<th data-value="ren_number" class="order">대여번호<c:choose>
+						<c:when
+							test="${data.order_by=='ren_number' and data.order_sc=='DESC' }">▼</c:when>
+						<c:when
+							test="${data.order_by=='ren_number' and data.order_sc=='ASC' }">▲</c:when>
+						<c:otherwise>▲</c:otherwise>
+					</c:choose></th>
 				<th class="tac">차량 번호</th>
 				<th class="tac">차량명</th>
 				<th class="tac">예약번호</th>
 				<th class="tac">예약자명</th>
 				<th class="tac">운전면허증</th>
-				<th class="tac">실대여일시</th>
+				<th class="tac">인수/반납예정일</th>
 				<th class="tac">이용 상태</th>
 				<th class="tac">실 반납 일시</th>
 				<th class="tac">초과시간</th>
@@ -38,14 +134,14 @@ td {
 					<c:forEach var="CARRESERVATION" items="${carResList}">
 						<tr>
 							<td><a
-								href="${path}/admin/carres/carResDetail?ren_number=${CARRESERVATION.ren_number }">${CARRESERVATION.ren_number }</a></td>
+								href="${path}/admin/carres/carResDetail?ren_number=${CARRESERVATION.ren_number}">${CARRESERVATION.ren_number}</a></td>
 							<td>${CARRESERVATION.ren_car_number }</td>
 							<td>${CARRESERVATION.car_name }</td>
 							<td>${CARRESERVATION.rsv_number }</td>
 							<td>${CARRESERVATION.rsv_name }</td>
 							<td>${CARRESERVATION.ren_license_number }</td>
-							<td>${CARRESERVATION.ren_take_date }</td>
-							<td>${CARRESERVATION.ren_state }</td>
+							<td>${CARRESERVATION.rsv_insu}~ ${CARRESERVATION.rsv_bannad}</td>
+							<td>${CARRESERVATION.rsv_state }</td>
 							<td>${CARRESERVATION.ren_return_date }</td>
 							<td>${CARRESERVATION.ren_overtime }</td>
 							<td>${CARRESERVATION.ren_add_price }</td>
@@ -60,37 +156,35 @@ td {
 			</c:choose>
 		</tbody>
 	</table>
-</div>
-<div class="well">
-	<!-- 옵션박스 / 검색 -->
-	<div id="carSearch" class="well">
-		<form id="f_search" name="f_search">
-			<input type="hidden" id="page" name="page" value="${data.page}">
-			<input type="hidden" id="order_by" name="order_by"
-				value="${data.order_by}" /> <input type="hidden" id="order_sc"
-				name="order_sc" value="${data.order_sc}" />
-			<div>
-				<div class="form-group">
-					<table>
-						<tr>
-							<td id="btd1"><select id="search" name="search">
-									<option value="ren_number">대여번호</option>
-									<option value="rsv_number">예약번호</option>
-									<option value="rsv_name">예약자명</option>
-									<option value="all">전체 리스트</option>
-							</select> <input type="text" name="keyword" id="keyword"
-								placeholder="검색어를 입력하세요." /> <input type="button"
-								class="btn btn-primary" id="searchData" value="검색" /></td>
-						</tr>
-					</table>
 
+	<div class="well">
+		<!-- 옵션박스 / 검색 -->
+		<div id="carSearch" class="well">
+			<form id="f_search" name="f_search">
+				<input type="hidden" id="page" name="page" value="${data.page}">
+				<input type="hidden" id="order_by" name="order_by" value="${data.order_by}" />
+				<input type="hidden" id="order_sc" name="order_sc" value="${data.order_sc}" />
+				<div>
+					<div class="form-group">
+						<table>
+							<tr>
+								<td id="btd1"><label>검색조건</label>
+								<select id="search" name="search">
+										<option value="ren_number">대여번호</option>
+										<option value="rsv_number">예약번호</option>
+										<option value="rsv_name">예약자명</option>
+										<option value="all">전체</option>
+								</select>
+								<input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요." />
+								<input type="button" class="btn btn-primary" id="searchData" value="검색" /></td>
+							</tr>
+						</table>
+					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
+		<!-- 페이지 네비게이션 시작 -->
+		<div id="boardPage">
+			<tag:paging page="${param.page }" total="${total }" list_size="10" />
+		</div>
 	</div>
-	<!-- 페이지 네비게이션 시작 -->
-	<div id="boardPage">
-		<tag:paging page="${param.page }" total="${total }" list_size="10" />
-	</div>
-</div>
-

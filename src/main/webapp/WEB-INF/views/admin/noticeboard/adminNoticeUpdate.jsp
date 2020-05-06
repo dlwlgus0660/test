@@ -34,8 +34,7 @@
 	<h2 class="sub-header">공지사항 수정/삭제</h2>
 	<div class="table-responsive">
 		<form id="update" name="update" method="post">
-			<input type="hidden" id="nt_number" name="nt_number"
-				value="${vo.nt_number}" />
+			<input type="hidden" id="nt_number" name="nt_number" value="${vo.nt_number}" />
 			<table class="table table-bordered">
 				<tr>
 					<td><b>글 번호</b></td>

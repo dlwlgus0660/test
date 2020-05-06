@@ -119,7 +119,6 @@
 			</table>
 		</form>
 	</div>
-
 	<div>
 		<input type="button" name="insertBtn" id="insertBtn"
 			class="btn btn-primary" value="등록"> <input type="button"

@@ -562,7 +562,6 @@ button:hover {
 
 /* 로그인 */
 #btn-home { background-color: #A4AAB2; }
-
 .form-box.login-box input[type="text"],
 .form-box.login-box input[type="password"],
 .form-box.login-box button {

@@ -8,8 +8,7 @@
 	<select id="carResList" resultType="AdminCarReservation">
 		SELECT *
 		FROM RENTAL
-		WHERE
-		ren_state = '입금완료(인수대기)' or ren_state = '렌트중' or ren_state = '반납완료'
+		WHERE ren_state = '입금완료(인수대기)' or ren_state = '렌트중' or ren_state = '반납완료'
 		order by ren_car_number desc
 	</select> -->
 
@@ -54,12 +53,12 @@
 				DESC
 			</when>
 		</choose>
-		) list
+		) list 
 		)
 		<where>
 			<if test="start_row != null and start_row != ''">
 				<if test="end_row != null and end_row != ''">
-					RNUM BETWEEN #{start_row} AND #{end_row}
+					RNUM BETWEEN #{start_row} AND #{end_row} and rsv_state = '입금완료(인수대기)' or rsv_state = '렌트중' or rsv_state = '반납완료'
 				</if>
 			</if>
 		</where>
@@ -81,35 +80,35 @@
 	
 	<!-- 차량 예약 관리 상세 -->
 	<select id="detail" resultType="AdminCarReservation">
-		SELECT
-		ren_number,
-		car_model_number,
-		rsv_number,
-		mem_id,
-		ren_take_date,
-		ren_state,
-		ren_return_date,
-		ren_expected_date,
-		ren_add_price,
-		ren_overtime,
-		ren_license_number,
-		ren_car_number,
-		car_name,
-		rsv_name
+		SELECT *
 		FROM RENTAL
 		WHERE
 		ren_number = #{ren_number}
 	</select>
 	
+	
+	<!-- 차량 예약 관리 업데이트 -->
 	<update id="update" parameterType="AdminCarReservation">
 		 UPDATE RENTAL
 		 SET
 		 ren_car_number = #{ren_car_number},
+		 rsv_number = #{rsv_number},
 		 ren_license_number = #{ren_license_number},
+		 ren_take_date = #{ren_take_date},
+		 rsv_state = #{rsv_state},
 		 ren_return_date = #{ren_return_date},
-		 ren_state = #{ren_state},
 		 ren_overtime = #{ren_overtime},
 		 ren_add_price = #{ren_add_price}
 		 WHERE ren_number = #{ren_number}
+	</update>
+	
+	
+	<!-- 회원 예약 내역에 업데이트 -->
+	<update id="change" parameterType="AdminCarReservation">
+		UPDATE RESERVATION
+		SET
+		ren_car_number = #{ren_car_number},
+		rsv_state = #{rsv_state}
+		WHERE rsv_number = #{rsv_number}
 	</update>
 </mapper>

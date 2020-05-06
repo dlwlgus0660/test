@@ -98,7 +98,6 @@
 								<option value="10인">10인</option>
 								<option value="11인">11인</option>
 								<option value="12인">12인</option>
-
 							</c:if>
 							<c:if test="${vo.car_number_passengers == '6인' }">
 								<option value="6인" selected>6인</option>
@@ -185,19 +184,14 @@
 				<tr>
 					<td>차량 옵션</td>
 					<td colspan="3">
-					
-					<!-- 옵션이 아무것도 선택되지 않았을 때 -->
-					<c:if test="${vo.car_option == '' }">
+						<!-- 옵션이 아무것도 선택되지 않았을 때 --> <c:if test="${vo.car_option == '' }">
 							<input type="checkbox" name="car_option" id="car_option"
 								value="네비게이션">네비게이션&nbsp;&nbsp; <input type="checkbox"
 								name="car_option" id="car_option" value="운전석 에어백">운전석
 							에어백&nbsp;&nbsp; <input type="checkbox" name="car_option"
 								id="car_option" value="블랙박스">블랙박스
-					</c:if>
-					
-					
-					 <!-- 옵션이 1개 선택되어 있었을 때 --> 
-					 <c:if test="${vo.car_option == '네비게이션' }">
+					</c:if> <!-- 옵션이 1개 선택되어 있었을 때 --> <c:if
+							test="${vo.car_option == '네비게이션' }">
 							<input type="checkbox" name="car_option" id="car_option"
 								value="네비게이션" checked>네비게이션&nbsp;&nbsp; <input
 								type="checkbox" name="car_option" id="car_option"
@@ -214,11 +208,8 @@
 								name="car_option" id="car_option" value="운전석 에어백">운전석 에어백&nbsp;&nbsp;<input
 								type="checkbox" name="car_option" id="car_option" value="블랙박스"
 								checked>블랙박스
-								</c:if> 
-								
-								
-					<!-- 옵션이 2개 이상 선택되어 있었을 때 --> 
-					<c:if test="${vo.car_option == '네비게이션,운전석 에어백'}">
+								</c:if> <!-- 옵션이 2개 이상 선택되어 있었을 때 --> <c:if
+							test="${vo.car_option == '네비게이션,운전석 에어백'}">
 							<input type="checkbox" name="car_option" id="car_option"
 								value="네비게이션" checked>네비게이션&nbsp;&nbsp; <input
 								type="checkbox" name="car_option" id="car_option"
@@ -236,7 +227,8 @@
 								type="checkbox" name="car_option" id="car_option"
 								value="운전석 에어백" checked>운전석 에어백&nbsp;&nbsp;<input
 								type="checkbox" name="car_option" id="car_option" value="블랙박스">블랙박스
-							</c:if></td>
+							</c:if>
+					</td>
 				</tr>
 				<tr>
 					<td>이미지</td>

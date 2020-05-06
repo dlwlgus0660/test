@@ -17,4 +17,7 @@ public interface AdminCarReservationService {
 	
 	//3.차량 예약 관리 상세 변경 저장
 	public int update(AdminCarReservationVO vo);
+
+	//4.차량 예약 상태 변경 시 회원 예약 내역에 업데이트
+	public int change(AdminCarReservationVO vo);
 }

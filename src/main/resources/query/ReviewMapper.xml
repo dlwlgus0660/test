@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jeju.client.review.dao.ReviewDao">
+
+	<select id="review" resultType="review">
+		select *
+		from review_board
+	</select>
+	
+	<select id="detail" resultType="review" parameterType="review">
+		select *
+		from review_board
+		where RE_NUMBER = #{RE_NUMBER}
+	</select>
+	
+</mapper>

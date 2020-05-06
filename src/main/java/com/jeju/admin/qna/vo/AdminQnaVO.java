@@ -5,14 +5,14 @@ import java.sql.Date;
 import com.jeju.admin.common.vo.CommonVO;
 
 public class AdminQnaVO extends CommonVO {
-	private int inq_number = 0;
-	private String mem_id = "";
-	private String mem_name = "";
-	private String inq_title = "";
-	private String inq_content = "";
-	private String inq_reply = "";
-	private Date inq_regdate;
-	private String inq_state = "";
+	private int inq_number = 0; // 글번호
+	private String mem_id = ""; // 회원아이디
+	private String mem_name = ""; //회원명
+	private String inq_title = ""; // 제목
+	private String inq_content = ""; // 내용
+	private String inq_reply = ""; // 답변(댓글)
+	private Date inq_regdate; // 등록일
+	private String inq_state = ""; // 답변여부
 
 	public int getInq_number() {
 		return inq_number;

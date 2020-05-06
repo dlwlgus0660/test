@@ -22,5 +22,5 @@
             <li><a href="/admin/reviewboard/review">후기 게시판</a></li>
             
             <li class="active"><a>통계<span class="sr-only">(current)</span></a></li>
-             <li><a href="/admin/salesstat/stat">매출 통계</a></li>
+             <li><a href="/admin/salesstat">매출 통계</a></li>
 </ul>

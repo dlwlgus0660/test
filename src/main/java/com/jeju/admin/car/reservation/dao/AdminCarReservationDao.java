@@ -18,4 +18,9 @@ public interface AdminCarReservationDao {
 	//3.차량 예약 관리 내역 변경 저장
 	public int update(AdminCarReservationVO vo);
 
+	
+	//4.회원 예약 관리로 업데이트
+	public int change(AdminCarReservationVO vo);
+	
+
 }

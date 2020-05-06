@@ -42,4 +42,11 @@ public class AdminMemberReservationDaoImpl implements AdminMemberReservationDao 
 		return (Integer) session.selectOne("memResListCnt");
 	}
 
+	//차량 예약 관리 인설트
+	@Override
+	public int insert(AdminMemberReservationVO vo) {
+		
+		return session.insert("insert",vo);
+	}
+
 }

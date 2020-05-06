@@ -13,16 +13,16 @@ import com.jeju.admin.common.page.Paging;
 @Service
 @Transactional
 public class AdminCarReservationServiceImpl implements AdminCarReservationService {
-	
+
 	@Autowired
 	private AdminCarReservationDao adminCarReservationDao;
-	
-	//1.차량 예약 관리 리스트
+
+	// 1.차량 예약 관리 리스트
 	@Override
-	public List<AdminCarReservationVO> carResList(AdminCarReservationVO vo){
+	public List<AdminCarReservationVO> carResList(AdminCarReservationVO vo) {
 		List<AdminCarReservationVO> list = null;
-		
-		//페이지 세팅
+
+		// 페이지 세팅
 		Paging.setPage(vo);
 
 		// 정렬에 대한 기본값 설정
@@ -32,25 +32,25 @@ public class AdminCarReservationServiceImpl implements AdminCarReservationServic
 			vo.setOrder_sc("DESC");
 
 		list = adminCarReservationDao.carResList(vo);
-		
+
 		return list;
 	}
-	
-	//1-1.전체 레코드 수 구현
+
+	// 1-1.전체 레코드 수 구현
 	@Override
 	public int listCnt(AdminCarReservationVO bvo) {
 		int countNum = 0;
 		countNum = adminCarReservationDao.listCnt(bvo);
 		return countNum;
 	}
-	
-	//차량 예약 관리 상세 내역
+
+	// 차량 예약 관리 상세 내역
 	@Override
 	public AdminCarReservationVO detail(int ren_number) throws Exception {
 		return adminCarReservationDao.detail(ren_number);
 	}
-	
-	//회원 예약 상태 변경 저장 
+
+	// 차량 예약 상태 변경 저장
 	@Override
 	public int update(AdminCarReservationVO vo) {
 		int result = 0;
@@ -61,7 +61,21 @@ public class AdminCarReservationServiceImpl implements AdminCarReservationServic
 			result = 0;
 		}
 		return result;
+	}
+
+	// 차량 예약 상태 변경 시 회원 예약 내역에 업데이트
+	@Override
+	public int change(AdminCarReservationVO vo) {
+
+		int result = 0;
+		try {
+			result = adminCarReservationDao.change(vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = 0;
 		}
-	
-	
+		return result;
+
+	}
+
 }

@@ -17,4 +17,8 @@ public interface AdminMemberReservationService {
 	
 	//전체 레코드 수 구현
 	public int memResListCnt(AdminMemberReservationVO vo);
+	
+	//차량 예약 관리로 인설트
+	public int insert(AdminMemberReservationVO vo);
+	
 }

@@ -3,15 +3,25 @@
 
 <mapper namespace="com.jeju.admin.refund.dao.AdminRefundDao">
 
-	<!--  환불 관리 -->
+	<!-- 환불 관리 -->
 	<select id="refundList" resultType="AdminRefund">
-		SELECT rsv_number, mem_id, rsv_name, car_name, rsv_apply_date, rsv_state, rsv_price, rsv_expected_date
+		SELECT *
 		FROM RESERVATION
 		where rsv_state = '환불대기' or rsv_state='환불완료'
-		
-		
-		
 	</select>
-		
 	
+	<!-- 환불 관리 상세 내역 -->
+	<select id="detail" resultType="AdminRefund">
+		SELECT *
+		FROM RESERVATION
+		where rsv_number = #{rsv_number}
+	</select>
+	
+	<!-- 환불 상태 업데이트 -->
+	<update id="update" parameterType="AdminRefund">
+		UPDATE RESERVATION
+		SET
+		rsv_state = #{rsv_state}
+		where rsv_number = #{rsv_number}
+	</update>	
 </mapper>

@@ -48,15 +48,13 @@ public class AdminLoginController {
 
 			// 로그인 실패
 		} else {
-			mav.setViewName("admin/login/adminLogin"); // 로그인 페이지 이동
-			mav.addObject("msg", "failure");
+			mav.setViewName("redirect:/admin"); // 로그인 페이지 이동
 			return mav;
 		}
 
 	}
 
 	// 3.관리자 로그아웃
-
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();

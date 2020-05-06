@@ -51,11 +51,11 @@ public class AdminCarReservationController {
 			login.setViewName("/admin/login/adminLogin");
 			return login;
 		} else {
-			mav.setViewName("admin/carreservation/adminCarReservation");
 			mav.addObject("carResList", carRList);
 			mav.addObject("total", total);
 			mav.addObject("count", count);
 			mav.addObject("data", vo);
+			mav.setViewName("admin/carreservation/adminCarReservation");
 			return mav;
 		}
 			
@@ -83,12 +83,14 @@ public class AdminCarReservationController {
 		
 		int result = 0;
 		String url = "";
-				
-		result = adminCarReservationService.update(vo);
-
-		if (result == 1) {
-			url = "/admin/carres/carRes";
 			
+		result = adminCarReservationService.update(vo);
+		System.out.println(result);
+		
+		if (result == 1) {
+			adminCarReservationService.change(vo);
+			System.out.println(vo.getRsv_number());
+			url = "/admin/carres/carRes";
 		} else {
 			url = "/admin/carreservation/adminCarReservationDetail?rsv_number = " + vo.getRen_number();
 		}
